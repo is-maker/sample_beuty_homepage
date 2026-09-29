@@ -1,0 +1,1394 @@
+/* ==========================================================
+   サンプル占いサロン
+   動きはすべて CSS で実装（JS はメニュー開閉とフォームのみ）
+   ========================================================== */
+
+/* ---------- 変数 ---------- */
+:root {
+  --color-bg: #0e0a1c;
+  --color-bg-2: #161029;
+  --color-panel: rgba(255, 255, 255, 0.04);
+  --color-line: rgba(217, 181, 106, 0.25);
+  --color-gold: #d9b56a;
+  --color-gold-light: #f3dca6;
+  --color-violet: #8a6bff;
+  --color-pink: #e59ac0;
+  --color-text: #ebe5f5;
+  --color-muted: #a79dc0;
+  --font-en: "Cinzel", serif;
+  --font-serif: "Shippori Mincho", serif;
+  --font-sans: "Zen Kaku Gothic New", sans-serif;
+  --header-h: 72px;
+}
+
+/* ---------- ベース ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.container {
+  width: min(1080px, 100% - 40px);
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(760px, 100% - 40px);
+}
+
+/* ---------- ボタン ---------- */
+.btn {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 14px 36px;
+  border: 1px solid var(--color-gold);
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  color: var(--color-bg);
+}
+
+/* ボタンの上を光がすっと横切る */
+.btn--gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+
+.btn--gold:hover::before {
+  left: 130%;
+}
+
+.btn--gold:hover {
+  box-shadow: 0 0 24px rgba(217, 181, 106, 0.5);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-gold-light);
+}
+
+.btn--ghost:hover {
+  background: rgba(217, 181, 106, 0.12);
+}
+
+/* ---------- ヘッダー ---------- */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-h);
+  background: rgba(14, 10, 28, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--color-line);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1200px, 100% - 40px);
+  height: 100%;
+  margin-inline: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo__mark {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--color-gold);
+  text-shadow: 0 0 12px rgba(217, 181, 106, 0.6);
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.logo__ja {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.logo__en {
+  font-family: var(--font-en);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--color-gold);
+}
+
+.gnav ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.gnav a {
+  position: relative;
+  font-size: 0.88rem;
+  transition: color 0.3s;
+}
+
+.gnav a:hover {
+  color: var(--color-gold-light);
+}
+
+/* ホバーすると小さな星が灯る */
+.gnav a:not(.gnav__cta)::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  font-size: 0.6rem;
+  color: var(--color-gold);
+  opacity: 0;
+  transform: translate(-50%, -4px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.gnav a:not(.gnav__cta):hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.gnav__cta {
+  padding: 8px 22px;
+  border: 1px solid var(--color-gold);
+  border-radius: 999px;
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* ---------- メインビジュアル ---------- */
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--header-h) 20px 40px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(138, 107, 255, 0.28), transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(229, 154, 192, 0.2), transparent 45%),
+    radial-gradient(ellipse at 50% 120%, rgba(217, 181, 106, 0.18), transparent 50%),
+    var(--color-bg);
+  text-align: center;
+}
+
+/* 星空：小さな点をタイル状に敷き詰め、サイズ違いの2層を別々にまたたかせる */
+.hero__stars,
+.hero__stars::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.2px 1.2px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 140px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 160px 60px, #fff, transparent),
+    radial-gradient(1px 1px at 230px 200px, #fff, transparent),
+    radial-gradient(1.2px 1.2px at 60px 240px, #fff, transparent),
+    radial-gradient(1px 1px at 270px 110px, #fff, transparent);
+  background-size: 300px 280px;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+.hero__stars::before {
+  content: "";
+  background-size: 470px 430px;
+  background-position: 130px 90px;
+  animation-duration: 4.5s;
+  animation-delay: -2s;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+
+/* 流れ星（2本が時間差で流れる） */
+.shooting-star {
+  position: absolute;
+  top: 12%;
+  left: 82%;
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff);
+  transform-origin: left center;
+  opacity: 0;
+  animation: shoot 8s ease-in 1.5s infinite;
+}
+
+.shooting-star--2 {
+  top: 30%;
+  left: 55%;
+  width: 110px;
+  animation-delay: 5.5s;
+  animation-duration: 11s;
+}
+
+@keyframes shoot {
+  0%   { opacity: 0; transform: rotate(155deg) translateX(0); }
+  2%   { opacity: 1; }
+  9%   { opacity: 0; transform: rotate(155deg) translateX(460px); }
+  100% { opacity: 0; transform: rotate(155deg) translateX(460px); }
+}
+
+/* 十二星座の輪 */
+.zodiac-wheel {
+  --size: min(88vw, 640px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.zodiac-wheel::before,
+.zodiac-wheel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.zodiac-wheel::before {
+  inset: 0;
+  border: 1px solid var(--color-line);
+}
+
+.zodiac-wheel::after {
+  inset: 56px;
+  border: 1px dashed rgba(217, 181, 106, 0.18);
+}
+
+.zodiac-wheel__ring {
+  position: absolute;
+  inset: 0;
+  animation: spin 120s linear infinite;
+}
+
+.zodiac-wheel__ring span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  margin: -1em 0 0 -1em;
+  font-size: clamp(1rem, 2.4vw, 1.5rem);
+  line-height: 2;
+  color: rgba(243, 220, 166, 0.55);
+  transform: rotate(calc(var(--i) * 30deg)) translateY(calc(var(--size) / -2 + 28px));
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__sub {
+  font-family: var(--font-en);
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  color: var(--color-gold);
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+/* 金色のグラデーション文字に光が流れ続ける */
+.hero__title {
+  margin: 18px 0 24px;
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 6.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.45;
+  background: linear-gradient(110deg, var(--color-gold) 20%, #fff8e6 40%, var(--color-gold) 60%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    titleIn 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both,
+    shimmer 6s linear 2s infinite;
+}
+
+@keyframes titleIn {
+  from { opacity: 0; letter-spacing: 0.4em; filter: blur(10px); }
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to   { background-position: -150% 0; }
+}
+
+.hero__text {
+  margin-bottom: 40px;
+  color: var(--color-muted);
+  animation: fadeUp 1s ease 1.4s both;
+}
+
+.hero__btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  animation: fadeUp 1s ease 1.6s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+/* ---------- セクション共通 ---------- */
+.section {
+  position: relative;
+  padding: 120px 0;
+}
+
+.section--tint {
+  background: var(--color-bg-2);
+}
+
+.section__title {
+  margin-bottom: 20px;
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.section__title span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-en);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--color-gold);
+}
+
+/* 見出しの下の飾り：線と星 */
+.section__title::after {
+  content: "✦";
+  display: block;
+  width: 160px;
+  margin: 14px auto 0;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--color-gold);
+  background: linear-gradient(90deg, transparent, var(--color-line) 30%, transparent 44%, transparent 56%, var(--color-line) 70%, transparent) center / 100% 1px no-repeat;
+}
+
+.section__lead {
+  margin-bottom: 48px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ラジオボタン本体は見えなくして、ラベル全体をボタンのように見せる */
+.sign-btn input,
+.tarot-card input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- 星座占い ---------- */
+.sign-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.sign-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 4px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-panel);
+  line-height: 1.4;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.sign-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+}
+
+/* キーボード操作時のフォーカス表示 */
+.sign-btn:has(:focus-visible) {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 3px;
+}
+
+.sign-btn:has(:checked) {
+  border-color: var(--color-gold);
+  background: rgba(217, 181, 106, 0.12);
+  box-shadow: 0 0 24px rgba(217, 181, 106, 0.3), inset 0 0 16px rgba(217, 181, 106, 0.12);
+}
+
+.sign-btn__symbol {
+  font-size: 1.6rem;
+  color: var(--color-gold-light);
+}
+
+.sign-btn__name {
+  margin-top: 4px;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.sign-btn__date {
+  font-size: 0.65rem;
+  color: var(--color-muted);
+}
+
+/* 結果パネル */
+.fortune {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  margin-top: 40px;
+  padding: 40px;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(138, 107, 255, 0.15), transparent 50%),
+    var(--color-panel);
+}
+
+.fortune__placeholder {
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.fortune__body {
+  display: none;
+  grid-template-columns: 220px 1fr;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  animation: fortuneIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* 選ばれた星座の結果だけを表示する */
+.horoscope:has(:checked) .fortune__placeholder { display: none; }
+.horoscope:has([value="aries"]:checked)       [data-sign="aries"],
+.horoscope:has([value="taurus"]:checked)      [data-sign="taurus"],
+.horoscope:has([value="gemini"]:checked)      [data-sign="gemini"],
+.horoscope:has([value="cancer"]:checked)      [data-sign="cancer"],
+.horoscope:has([value="leo"]:checked)         [data-sign="leo"],
+.horoscope:has([value="virgo"]:checked)       [data-sign="virgo"],
+.horoscope:has([value="libra"]:checked)       [data-sign="libra"],
+.horoscope:has([value="scorpio"]:checked)     [data-sign="scorpio"],
+.horoscope:has([value="sagittarius"]:checked) [data-sign="sagittarius"],
+.horoscope:has([value="capricorn"]:checked)   [data-sign="capricorn"],
+.horoscope:has([value="aquarius"]:checked)    [data-sign="aquarius"],
+.horoscope:has([value="pisces"]:checked)      [data-sign="pisces"] {
+  display: grid;
+}
+
+@keyframes fortuneIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); filter: blur(4px); }
+}
+
+.fortune__rank {
+  text-align: center;
+}
+
+.fortune__symbol {
+  display: grid;
+  place-items: center;
+  width: 140px;
+  aspect-ratio: 1;
+  margin: 0 auto 12px;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  font-size: 3.4rem;
+  color: var(--color-gold-light);
+  box-shadow: 0 0 40px rgba(217, 181, 106, 0.25), inset 0 0 30px rgba(217, 181, 106, 0.15);
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  to { box-shadow: 0 0 60px rgba(217, 181, 106, 0.45), inset 0 0 30px rgba(217, 181, 106, 0.25); }
+}
+
+.fortune__rank-num {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+}
+
+.fortune__rank-num strong {
+  margin: 0 4px;
+  font-family: var(--font-en);
+  font-size: 2.4rem;
+  color: var(--color-gold);
+}
+
+.fortune__sign {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.meters {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.meter {
+  display: grid;
+  grid-template-columns: 4.5em 1fr 5.5em;
+  align-items: center;
+  gap: 12px;
+}
+
+.meter dt {
+  font-weight: 500;
+}
+
+.meter dd {
+  margin: 0;
+}
+
+.meter__bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+/* 結果が表示されるたびに、バーが0から --v まで伸びる */
+.meter__bar span {
+  display: block;
+  width: var(--v);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-violet), var(--color-pink), var(--color-gold));
+  animation: grow 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+}
+
+@keyframes grow {
+  from { width: 0; }
+}
+
+.meter__stars {
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+.fortune__lucky {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.9rem;
+}
+
+.fortune__lucky span {
+  color: var(--color-muted);
+}
+
+.swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px -2px 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.fortune__message {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  line-height: 2;
+}
+
+/* ---------- タロット ---------- */
+.tarot {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 32px);
+  perspective: 1200px;
+}
+
+.tarot-card {
+  position: relative;
+  width: clamp(96px, 26vw, 180px);
+  aspect-ratio: 2 / 3.3;
+  cursor: pointer;
+  transition: transform 0.4s ease, opacity 0.5s, filter 0.5s;
+}
+
+.tarot-card:hover {
+  transform: translateY(-12px);
+}
+
+.tarot-card:has(:focus-visible) {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+/* 1枚めくったら、残りのカードは暗くして選べなくする */
+.tarot:has(:checked) .tarot-card {
+  transform: none;
+  cursor: default;
+}
+
+.tarot:has(:checked) .tarot-card:not(:has(:checked)) {
+  opacity: 0.35;
+  filter: grayscale(0.6);
+  transform: scale(0.94);
+  pointer-events: none;
+}
+
+.tarot-card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.tarot-card:has(:checked) .tarot-card__inner {
+  transform: rotateY(180deg);
+}
+
+.tarot-card__back,
+.tarot-card__front {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* カードの裏面：幾何学模様＋中央の星 */
+.tarot-card__back {
+  border: 1px solid var(--color-gold);
+  background:
+    radial-gradient(circle at center, transparent 30%, rgba(217, 181, 106, 0.18) 31%, transparent 32%),
+    radial-gradient(circle at center, transparent 44%, rgba(217, 181, 106, 0.18) 45%, transparent 46%),
+    repeating-linear-gradient(45deg, rgba(217, 181, 106, 0.08) 0 2px, transparent 2px 12px),
+    repeating-linear-gradient(-45deg, rgba(217, 181, 106, 0.08) 0 2px, transparent 2px 12px),
+    linear-gradient(160deg, #2a1f55, #140e2a);
+  box-shadow: inset 0 0 0 6px var(--color-bg-2), inset 0 0 0 7px var(--color-line), 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.4s;
+}
+
+.tarot-card__back::after {
+  content: "✦";
+  font-size: 2rem;
+  color: var(--color-gold);
+  text-shadow: 0 0 14px rgba(217, 181, 106, 0.8);
+}
+
+.tarot-card:hover .tarot-card__back {
+  box-shadow: inset 0 0 0 6px var(--color-bg-2), inset 0 0 0 7px var(--color-line), 0 0 36px rgba(138, 107, 255, 0.6);
+}
+
+/* カードの表面 */
+.tarot-card__front {
+  transform: rotateY(180deg);
+  align-content: space-between;
+  padding: 14px 8px;
+  border: 1px solid var(--color-gold);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(243, 220, 166, 0.35), transparent 55%),
+    linear-gradient(170deg, #3a2b6e, #1a1238);
+  box-shadow: inset 0 0 0 5px rgba(14, 10, 28, 0.6), 0 0 40px rgba(217, 181, 106, 0.45);
+  line-height: 1.3;
+}
+
+.tarot-card__num {
+  font-family: var(--font-en);
+  font-size: 0.8rem;
+  color: var(--color-gold);
+}
+
+.tarot-card__icon {
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  color: var(--color-gold-light);
+  text-shadow: 0 0 20px rgba(243, 220, 166, 0.7);
+}
+
+.tarot-card__name {
+  font-family: var(--font-en);
+  font-size: clamp(0.55rem, 1.8vw, 0.8rem);
+  letter-spacing: 0.08em;
+}
+
+/* 結果：めくったカードと同じ番目の文章を、めくり終わる頃に表示 */
+.tarot-results {
+  max-width: 640px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.tarot-result {
+  display: none;
+}
+
+.tarot-form:has(.tarot-card:nth-child(1) :checked) .tarot-result:nth-child(1),
+.tarot-form:has(.tarot-card:nth-child(2) :checked) .tarot-result:nth-child(2),
+.tarot-form:has(.tarot-card:nth-child(3) :checked) .tarot-result:nth-child(3) {
+  display: block;
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+
+.tarot-result__title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-gold-light);
+}
+
+.tarot-result__title span {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--color-gold);
+}
+
+.tarot-result__keyword {
+  margin: 12px 0;
+  color: var(--color-pink);
+  font-size: 0.9rem;
+}
+
+/* 「伏せ直す」ボタンはカードを選んだ後だけ表示 */
+.tarot-actions {
+  margin-top: 32px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s 1s, visibility 0s 1s;
+}
+
+.tarot-form:has(:checked) .tarot-actions {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ---------- 占い師紹介 ---------- */
+.readers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.reader {
+  padding: 36px 28px;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  background: var(--color-panel);
+  text-align: center;
+  transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+
+.reader:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-gold);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(138, 107, 255, 0.15);
+}
+
+/* 回転する金色のリングで囲んだアイコン */
+.reader__avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 110px;
+  aspect-ratio: 1;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4a3a8a, #1a1238);
+  font-size: 2.6rem;
+  color: var(--color-gold-light);
+}
+
+.reader__avatar::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-gold), transparent 30%, var(--color-violet) 50%, transparent 70%, var(--color-gold));
+  -webkit-mask: radial-gradient(circle, transparent 60%, #000 61%);
+  mask: radial-gradient(circle, transparent 60%, #000 61%);
+  animation: spin 8s linear infinite;
+}
+
+.reader__name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.reader__name span {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+}
+
+.reader__tags {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+
+.reader__tags li {
+  padding: 0 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--color-gold-light);
+}
+
+.reader p {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  text-align: left;
+}
+
+/* ---------- 料金 ---------- */
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.plan {
+  position: relative;
+  padding: 40px 28px;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  background: var(--color-panel);
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.plan:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.plan--featured {
+  padding-block: 56px;
+  border-color: var(--color-gold);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(217, 181, 106, 0.2), transparent 60%),
+    var(--color-panel);
+  box-shadow: 0 0 40px rgba(217, 181, 106, 0.15);
+}
+
+.plan__badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  padding: 2px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  color: var(--color-bg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transform: translateX(-50%);
+}
+
+.plan__name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+}
+
+.plan__time {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.plan__price {
+  margin: 20px 0;
+  font-family: var(--font-en);
+  font-size: 2.2rem;
+  color: var(--color-gold-light);
+}
+
+.plan__price small {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.plan__list li {
+  padding: 8px 0;
+  border-top: 1px dashed var(--color-line);
+  font-size: 0.9rem;
+}
+
+.plan__list li::before {
+  content: "✦ ";
+  color: var(--color-gold);
+}
+
+/* ---------- よくある質問 ---------- */
+.faq {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.faq__item {
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-panel);
+  transition: border-color 0.3s;
+  /* height: auto へのアニメーションを許可する（対応ブラウザのみ） */
+  interpolate-size: allow-keywords;
+}
+
+.faq__item[open] {
+  border-color: var(--color-gold);
+}
+
+/* 開閉をなめらかに（未対応ブラウザでは通常どおり瞬時に開閉） */
+.faq__item::details-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease, content-visibility 0.4s allow-discrete;
+}
+
+.faq__item[open]::details-content {
+  height: auto;
+}
+
+.faq__item summary {
+  position: relative;
+  padding: 20px 56px 20px 52px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 先頭の「Q」 */
+.faq__item summary::before {
+  content: "Q";
+  position: absolute;
+  left: 20px;
+  font-family: var(--font-en);
+  color: var(--color-gold);
+}
+
+/* 右端の「＋」が開くと「×」に回転 */
+.faq__item summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-gold);
+  transform: translateY(-50%);
+  transition: transform 0.3s;
+}
+
+.faq__item[open] summary::after {
+  transform: translateY(-50%) rotate(135deg);
+}
+
+.faq__item p {
+  padding: 0 24px 20px 52px;
+  color: var(--color-muted);
+}
+
+/* ---------- 予約フォーム ---------- */
+.form {
+  display: grid;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.req,
+.opt {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+
+.req {
+  background: var(--color-pink);
+  color: var(--color-bg);
+}
+
+.opt {
+  border: 1px solid var(--color-line);
+  color: var(--color-muted);
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 400;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(217, 181, 106, 0.2);
+}
+
+/* 一度入力してから誤りがある項目だけ赤枠にする（:user-invalid） */
+.form :user-invalid {
+  border-color: var(--color-pink);
+}
+
+.form textarea::placeholder {
+  color: rgba(167, 157, 192, 0.6);
+}
+
+.form .btn {
+  justify-self: center;
+  min-width: 260px;
+}
+
+.form__msg {
+  min-height: 1.5em;
+  font-size: 0.9rem;
+  color: var(--color-gold-light);
+  text-align: center;
+}
+
+/* ---------- フッター ---------- */
+.footer {
+  padding: 56px 20px 32px;
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.footer__logo {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-gold-light);
+}
+
+.footer__note {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.footer__copy {
+  margin-top: 24px;
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+/* ---------- ページトップへ戻るボタン ---------- */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  background: rgba(14, 10, 28, 0.85);
+  box-shadow: 0 0 20px rgba(217, 181, 106, 0.25);
+  transition: background 0.3s;
+}
+
+.to-top::before {
+  content: "☾";
+  font-size: 1.3rem;
+  color: var(--color-gold);
+}
+
+.to-top:hover {
+  background: rgba(217, 181, 106, 0.2);
+}
+
+/* ==========================================================
+   スクロール連動アニメーション（CSS の scroll-driven animations）
+   対応ブラウザでのみ動き、未対応ブラウザでは最初から表示される
+   ========================================================== */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* 要素が画面に入ってくる間に、下からふわっと表示 */
+    [data-reveal] {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    /* トップへ戻るボタンは少しスクロールしてから現れる */
+    .to-top {
+      animation: toTopIn linear both;
+      animation-timeline: scroll();
+      animation-range: 0 60vh;
+    }
+  }
+}
+
+@keyframes reveal {
+  from { opacity: 0; translate: 0 40px; }
+}
+
+@keyframes toTopIn {
+  from { opacity: 0; translate: 0 16px; visibility: hidden; }
+}
+
+/* ==========================================================
+   レスポンシブ
+   ========================================================== */
+@media (max-width: 960px) {
+  .sign-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .readers,
+  .plans {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .plans {
+    gap: 36px;
+  }
+
+  .fortune__body {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-h: 64px;
+  }
+
+  .section {
+    padding: 88px 0;
+  }
+
+  .logo__ja {
+    font-size: 1rem;
+  }
+
+  /* ハンバーガーボタン */
+  .menu-btn {
+    position: relative;
+    z-index: 110;
+    display: block;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .menu-btn span {
+    position: absolute;
+    left: 10px;
+    width: 24px;
+    height: 2px;
+    background: var(--color-gold-light);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .menu-btn span:nth-child(1) { top: 14px; }
+  .menu-btn span:nth-child(2) { top: 21px; }
+  .menu-btn span:nth-child(3) { top: 28px; }
+
+  .is-menu-open .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .is-menu-open .menu-btn span:nth-child(2) { opacity: 0; }
+  .is-menu-open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* 全画面ドロワーメニュー（右上から円が広がるように開く） */
+  .gnav {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(138, 107, 255, 0.25), transparent 60%),
+      var(--color-bg);
+    clip-path: circle(0 at calc(100% - 42px) 32px);
+    visibility: hidden;
+    transition: clip-path 0.6s cubic-bezier(0.6, 0, 0.2, 1), visibility 0.6s;
+  }
+
+  .is-menu-open .gnav {
+    clip-path: circle(150% at calc(100% - 42px) 32px);
+    visibility: visible;
+  }
+
+  .is-menu-open {
+    overflow: hidden;
+  }
+
+  .gnav ul {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .gnav a {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+  }
+
+  .gnav a:not(.gnav__cta)::after {
+    display: none;
+  }
+
+  .fortune {
+    padding: 32px 20px;
+  }
+
+  .meter {
+    grid-template-columns: 4em 1fr 5em;
+    gap: 8px;
+  }
+
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .sign-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .hero__btns .btn {
+    width: 100%;
+  }
+
+  .form .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* 動きを減らす設定のユーザーにはアニメーションを止める */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

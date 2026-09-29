@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サンプル占いサロン | SAMPLE FORTUNE SALON</title>
+  <meta name="description" content="星とタロットで、あなたの明日をそっと照らす。サンプル占いサロン（架空店舗のサンプル）。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sample_2.css">
+  <script src="sample_2.js" defer></script>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header" id="top">
+    <div class="header__inner">
+      <a href="#top" class="logo">
+        <span class="logo__mark" aria-hidden="true">☾</span>
+        <span class="logo__text">
+          <span class="logo__ja">サンプル占いサロン</span>
+          <span class="logo__en">SAMPLE FORTUNE SALON</span>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="gnav" id="gnav">
+        <ul>
+          <li><a href="#horoscope">星座占い</a></li>
+          <li><a href="#tarot">タロット</a></li>
+          <li><a href="#readers">占い師</a></li>
+          <li><a href="#price">料金</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="#reserve" class="gnav__cta">ご予約</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- メインビジュアル -->
+    <section class="hero">
+      <div class="hero__stars" aria-hidden="true"></div>
+      <span class="shooting-star" aria-hidden="true"></span>
+      <span class="shooting-star shooting-star--2" aria-hidden="true"></span>
+
+      <!-- ゆっくり回転する十二星座の輪 -->
+      <div class="zodiac-wheel" aria-hidden="true">
+        <div class="zodiac-wheel__ring">
+          <span style="--i:0">♈&#xFE0E;</span><span style="--i:1">♉&#xFE0E;</span><span style="--i:2">♊&#xFE0E;</span>
+          <span style="--i:3">♋&#xFE0E;</span><span style="--i:4">♌&#xFE0E;</span><span style="--i:5">♍&#xFE0E;</span>
+          <span style="--i:6">♎&#xFE0E;</span><span style="--i:7">♏&#xFE0E;</span><span style="--i:8">♐&#xFE0E;</span>
+          <span style="--i:9">♑&#xFE0E;</span><span style="--i:10">♒&#xFE0E;</span><span style="--i:11">♓&#xFE0E;</span>
+        </div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__sub">Fortune Telling Salon</p>
+        <h1 class="hero__title">その迷いに、<br>星のこたえを。</h1>
+        <p class="hero__text">西洋占星術とタロットで、あなたの「これから」をやさしく照らします。</p>
+        <div class="hero__btns">
+          <a href="#horoscope" class="btn btn--gold">今月の運勢を見る</a>
+          <a href="#reserve" class="btn btn--ghost">鑑定を予約する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 星座占い：ラジオボタンの選択状態を CSS の :has() で読み取って結果を切り替える -->
+    <section class="section" id="horoscope">
+      <div class="container horoscope">
+        <h2 class="section__title" data-reveal><span>MONTHLY FORTUNE</span>今月の星座占い</h2>
+        <p class="section__lead" data-reveal>星座を選ぶと、今月のあなたの運勢が表示されます。</p>
+
+        <div class="sign-grid" role="radiogroup" aria-label="星座を選ぶ" data-reveal>
+          <label class="sign-btn"><input type="radio" name="sign" value="aries"><span class="sign-btn__symbol" aria-hidden="true">♈&#xFE0E;</span><span class="sign-btn__name">牡羊座</span><span class="sign-btn__date">3/21〜4/19</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="taurus"><span class="sign-btn__symbol" aria-hidden="true">♉&#xFE0E;</span><span class="sign-btn__name">牡牛座</span><span class="sign-btn__date">4/20〜5/20</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="gemini"><span class="sign-btn__symbol" aria-hidden="true">♊&#xFE0E;</span><span class="sign-btn__name">双子座</span><span class="sign-btn__date">5/21〜6/21</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="cancer"><span class="sign-btn__symbol" aria-hidden="true">♋&#xFE0E;</span><span class="sign-btn__name">蟹座</span><span class="sign-btn__date">6/22〜7/22</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="leo"><span class="sign-btn__symbol" aria-hidden="true">♌&#xFE0E;</span><span class="sign-btn__name">獅子座</span><span class="sign-btn__date">7/23〜8/22</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="virgo"><span class="sign-btn__symbol" aria-hidden="true">♍&#xFE0E;</span><span class="sign-btn__name">乙女座</span><span class="sign-btn__date">8/23〜9/22</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="libra"><span class="sign-btn__symbol" aria-hidden="true">♎&#xFE0E;</span><span class="sign-btn__name">天秤座</span><span class="sign-btn__date">9/23〜10/23</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="scorpio"><span class="sign-btn__symbol" aria-hidden="true">♏&#xFE0E;</span><span class="sign-btn__name">蠍座</span><span class="sign-btn__date">10/24〜11/22</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="sagittarius"><span class="sign-btn__symbol" aria-hidden="true">♐&#xFE0E;</span><span class="sign-btn__name">射手座</span><span class="sign-btn__date">11/23〜12/21</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="capricorn"><span class="sign-btn__symbol" aria-hidden="true">♑&#xFE0E;</span><span class="sign-btn__name">山羊座</span><span class="sign-btn__date">12/22〜1/19</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="aquarius"><span class="sign-btn__symbol" aria-hidden="true">♒&#xFE0E;</span><span class="sign-btn__name">水瓶座</span><span class="sign-btn__date">1/20〜2/18</span></label>
+          <label class="sign-btn"><input type="radio" name="sign" value="pisces"><span class="sign-btn__symbol" aria-hidden="true">♓&#xFE0E;</span><span class="sign-btn__name">魚座</span><span class="sign-btn__date">2/19〜3/20</span></label>
+        </div>
+
+        <div class="fortune">
+          <p class="fortune__placeholder">☝︎ 上から星座を選ぶと、今月の運勢が表示されます</p>
+
+          <div class="fortune__body" data-sign="aries">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♈&#xFE0E;</div><p class="fortune__rank-num">第<strong>3</strong>位</p><p class="fortune__sign">牡羊座（3/21〜4/19）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:100%"></span></dd><dd class="meter__stars">★★★★★</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#7b2d3f"></i>ワインレッド</b><span>ラッキーアイテム</span><b>腕時計</b></p>
+              <p class="fortune__message">行動力が最大の武器になる月。迷っていたことに一歩踏み出すと、思わぬ追い風が吹きそうです。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="taurus">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♉&#xFE0E;</div><p class="fortune__rank-num">第<strong>8</strong>位</p><p class="fortune__sign">牡牛座（4/20〜5/20）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#1f2a5c"></i>ミッドナイトブルー</b><span>ラッキーアイテム</span><b>チョコレート</b></p>
+              <p class="fortune__message">身の回りを整えると運気アップ。デスクやカバンの中を片付けると、頭の中もすっきりします。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="gemini">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♊&#xFE0E;</div><p class="fortune__rank-num">第<strong>1</strong>位</p><p class="fortune__sign">双子座（5/21〜6/21）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:100%"></span></dd><dd class="meter__stars">★★★★★</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:100%"></span></dd><dd class="meter__stars">★★★★★</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#d9b56a"></i>ゴールド</b><span>ラッキーアイテム</span><b>新しいペン</b></p>
+              <p class="fortune__message">星があなたの味方をする最高の月。直感で選んだことがうまく運びます。アイデアはすぐメモを。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="cancer">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♋&#xFE0E;</div><p class="fortune__rank-num">第<strong>11</strong>位</p><p class="fortune__sign">蟹座（6/22〜7/22）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:40%"></span></dd><dd class="meter__stars">★★☆☆☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:40%"></span></dd><dd class="meter__stars">★★☆☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#f3efe6"></i>パールホワイト</b><span>ラッキーアイテム</span><b>マグカップ</b></p>
+              <p class="fortune__message">言葉選びは慎重に。いつもより一呼吸おいてから話すと、誤解を防げそうです。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="leo">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♌&#xFE0E;</div><p class="fortune__rank-num">第<strong>5</strong>位</p><p class="fortune__sign">獅子座（7/23〜8/22）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#f3efe6"></i>パールホワイト</b><span>ラッキーアイテム</span><b>シルバーのアクセサリー</b></p>
+              <p class="fortune__message">あなたの頑張りが周りに認められる時期。遠慮せず、成果をきちんと伝えましょう。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="virgo">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♍&#xFE0E;</div><p class="fortune__rank-num">第<strong>7</strong>位</p><p class="fortune__sign">乙女座（8/23〜9/22）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#b9a4e8"></i>ラベンダー</b><span>ラッキーアイテム</span><b>手帳</b></p>
+              <p class="fortune__message">計画を立てるのに最適な月。やりたいことを書き出すと、優先順位が自然と見えてきます。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="libra">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♎&#xFE0E;</div><p class="fortune__rank-num">第<strong>2</strong>位</p><p class="fortune__sign">天秤座（9/23〜10/23）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:100%"></span></dd><dd class="meter__stars">★★★★★</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#e59ac0"></i>ローズピンク</b><span>ラッキーアイテム</span><b>ハンドクリーム</b></p>
+              <p class="fortune__message">人との縁がつながりやすい月。久しぶりの人に連絡してみると、うれしい知らせが届くかも。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="scorpio">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♏&#xFE0E;</div><p class="fortune__rank-num">第<strong>10</strong>位</p><p class="fortune__sign">蠍座（10/24〜11/22）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:40%"></span></dd><dd class="meter__stars">★★☆☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#7b2d3f"></i>ワインレッド</b><span>ラッキーアイテム</span><b>ハンカチ</b></p>
+              <p class="fortune__message">無理をせず、ペースを落としてOKな月。しっかり休むことが、次のチャンスへの準備になります。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="sagittarius">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♐&#xFE0E;</div><p class="fortune__rank-num">第<strong>4</strong>位</p><p class="fortune__sign">射手座（11/23〜12/21）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#8fc4ec"></i>スカイブルー</b><span>ラッキーアイテム</span><b>お気に入りの本</b></p>
+              <p class="fortune__message">新しい場所に縁がある月。行ったことのないお店や街へ出かけると、ひらめきが訪れます。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="capricorn">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♑&#xFE0E;</div><p class="fortune__rank-num">第<strong>9</strong>位</p><p class="fortune__sign">山羊座（12/22〜1/19）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#8fc4ec"></i>スカイブルー</b><span>ラッキーアイテム</span><b>アロマキャンドル</b></p>
+              <p class="fortune__message">おだやかに流れる月。いつものルーティンを丁寧にこなすことで、小さな幸運が積み重なります。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="aquarius">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♒&#xFE0E;</div><p class="fortune__rank-num">第<strong>6</strong>位</p><p class="fortune__sign">水瓶座（1/20〜2/18）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:80%"></span></dd><dd class="meter__stars">★★★★☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#9fdcc0"></i>ミントグリーン</b><span>ラッキーアイテム</span><b>温かい紅茶</b></p>
+              <p class="fortune__message">少し立ち止まって、自分の気持ちを整理するのに向いた月。夜にゆっくりお茶を飲む時間を。</p>
+            </div>
+          </div>
+
+          <div class="fortune__body" data-sign="pisces">
+            <div class="fortune__rank"><div class="fortune__symbol" aria-hidden="true">♓&#xFE0E;</div><p class="fortune__rank-num">第<strong>12</strong>位</p><p class="fortune__sign">魚座（2/19〜3/20）</p></div>
+            <div>
+              <dl class="meters">
+                <div class="meter"><dt>恋愛運</dt><dd class="meter__bar"><span style="--v:40%"></span></dd><dd class="meter__stars">★★☆☆☆</dd></div>
+                <div class="meter"><dt>仕事運</dt><dd class="meter__bar"><span style="--v:40%"></span></dd><dd class="meter__stars">★★☆☆☆</dd></div>
+                <div class="meter"><dt>金運</dt><dd class="meter__bar"><span style="--v:60%"></span></dd><dd class="meter__stars">★★★☆☆</dd></div>
+              </dl>
+              <p class="fortune__lucky"><span>ラッキーカラー</span><b><i class="swatch" style="background:#b9a4e8"></i>ラベンダー</b><span>ラッキーアイテム</span><b>入浴剤</b></p>
+              <p class="fortune__message">思い通りにいかなくても大丈夫。星は巡るもの、月末にかけて流れが好転していきます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- タロット：ラジオボタンでカードをめくり、リセットボタンで元に戻す -->
+    <section class="section section--tint" id="tarot">
+      <div class="container">
+        <h2 class="section__title" data-reveal><span>ONE ORACLE TAROT</span>タロット ワンオラクル</h2>
+        <p class="section__lead" data-reveal>心の中で質問をひとつ思い浮かべて、気になるカードを1枚めくってください。</p>
+
+        <form class="tarot-form">
+          <div class="tarot" data-reveal>
+            <label class="tarot-card">
+              <input type="radio" name="tarot" aria-label="1枚目のカードをめくる">
+              <span class="tarot-card__inner">
+                <span class="tarot-card__back" aria-hidden="true"></span>
+                <span class="tarot-card__front" aria-hidden="true">
+                  <span class="tarot-card__num">XVII</span>
+                  <span class="tarot-card__icon">★&#xFE0E;</span>
+                  <span class="tarot-card__name">THE STAR</span>
+                </span>
+              </span>
+            </label>
+            <label class="tarot-card">
+              <input type="radio" name="tarot" aria-label="2枚目のカードをめくる">
+              <span class="tarot-card__inner">
+                <span class="tarot-card__back" aria-hidden="true"></span>
+                <span class="tarot-card__front" aria-hidden="true">
+                  <span class="tarot-card__num">XIX</span>
+                  <span class="tarot-card__icon">☼&#xFE0E;</span>
+                  <span class="tarot-card__name">THE SUN</span>
+                </span>
+              </span>
+            </label>
+            <label class="tarot-card">
+              <input type="radio" name="tarot" aria-label="3枚目のカードをめくる">
+              <span class="tarot-card__inner">
+                <span class="tarot-card__back" aria-hidden="true"></span>
+                <span class="tarot-card__front" aria-hidden="true">
+                  <span class="tarot-card__num">X</span>
+                  <span class="tarot-card__icon">◎&#xFE0E;</span>
+                  <span class="tarot-card__name">WHEEL OF FORTUNE</span>
+                </span>
+              </span>
+            </label>
+          </div>
+
+          <div class="tarot-results" aria-live="polite">
+            <div class="tarot-result">
+              <p class="tarot-result__title"><span>XVII — THE STAR</span>星</p>
+              <p class="tarot-result__keyword">キーワード：希望・癒やし</p>
+              <p>長いトンネルの先に光が見えてきます。願いを言葉にすると、叶う日が近づきます。</p>
+            </div>
+            <div class="tarot-result">
+              <p class="tarot-result__title"><span>XIX — THE SUN</span>太陽</p>
+              <p class="tarot-result__keyword">キーワード：成功・喜び</p>
+              <p>あなたらしさが最大限に輝く時。素直な気持ちで楽しむことが、成功への近道です。</p>
+            </div>
+            <div class="tarot-result">
+              <p class="tarot-result__title"><span>X — WHEEL OF FORTUNE</span>運命の輪</p>
+              <p class="tarot-result__keyword">キーワード：転機・チャンス</p>
+              <p>流れが大きく変わるタイミング。訪れたチャンスには、ためらわず手を伸ばしましょう。</p>
+            </div>
+          </div>
+
+          <div class="tarot-actions">
+            <!-- type="reset" はフォームを初期状態に戻す HTML 標準のボタン（JS 不要） -->
+            <button class="btn btn--ghost" type="reset">カードを伏せ直す</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 占い師紹介 -->
+    <section class="section" id="readers">
+      <div class="container">
+        <h2 class="section__title" data-reveal><span>FORTUNE TELLERS</span>占い師のご紹介</h2>
+        <div class="readers">
+          <article class="reader" data-reveal>
+            <div class="reader__avatar" aria-hidden="true">☾</div>
+            <h3 class="reader__name">月野 しずく<span>Shizuku Tsukino</span></h3>
+            <ul class="reader__tags"><li>西洋占星術</li><li>恋愛</li></ul>
+            <p>ホロスコープから、その人らしい恋の形を読み解きます。やわらかな語り口で、初めての方にも安心と好評です。</p>
+          </article>
+          <article class="reader" data-reveal>
+            <div class="reader__avatar" aria-hidden="true">✦</div>
+            <h3 class="reader__name">星宮 アオイ<span>Aoi Hoshimiya</span></h3>
+            <ul class="reader__tags"><li>タロット</li><li>仕事・転機</li></ul>
+            <p>転職や独立など、人生の分かれ道にいる方へ。カードが示す選択肢を、具体的な行動に落とし込みます。</p>
+          </article>
+          <article class="reader" data-reveal>
+            <div class="reader__avatar" aria-hidden="true">☼</div>
+            <h3 class="reader__name">陽向 レイ<span>Rei Hinata</span></h3>
+            <ul class="reader__tags"><li>数秘術</li><li>人間関係</li></ul>
+            <p>生年月日から導く「魂の数字」で、あなたの本質と相手との相性を分かりやすくお伝えします。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 料金 -->
+    <section class="section section--tint" id="price">
+      <div class="container">
+        <h2 class="section__title" data-reveal><span>PRICE</span>鑑定メニュー</h2>
+        <div class="plans">
+          <article class="plan" data-reveal>
+            <h3 class="plan__name">お試し鑑定</h3>
+            <p class="plan__time">対面 15分</p>
+            <p class="plan__price">¥3,000<small>（税込）</small></p>
+            <ul class="plan__list">
+              <li>ご相談 1テーマ</li>
+              <li>初めての方におすすめ</li>
+            </ul>
+          </article>
+          <article class="plan plan--featured" data-reveal>
+            <p class="plan__badge">人気 No.1</p>
+            <h3 class="plan__name">じっくり鑑定</h3>
+            <p class="plan__time">対面 30分</p>
+            <p class="plan__price">¥5,500<small>（税込）</small></p>
+            <ul class="plan__list">
+              <li>ご相談 テーマ数自由</li>
+              <li>占術の組み合わせOK</li>
+              <li>鑑定メモのお渡し</li>
+            </ul>
+          </article>
+          <article class="plan" data-reveal>
+            <h3 class="plan__name">オンライン鑑定</h3>
+            <p class="plan__time">ビデオ通話 20分</p>
+            <p class="plan__price">¥4,000<small>（税込）</small></p>
+            <ul class="plan__list">
+              <li>全国どこからでも</li>
+              <li>夜23時まで受付</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <h2 class="section__title" data-reveal><span>FAQ</span>よくある質問</h2>
+        <div class="faq">
+          <details class="faq__item" data-reveal>
+            <summary>占いが初めてでも大丈夫ですか？</summary>
+            <p>もちろんです。ご来店の約半数が初めての方です。話したいことがまとまっていなくても、占い師が順番にお伺いします。</p>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>生年月日以外に必要なものはありますか？</summary>
+            <p>西洋占星術では、出生時間と出生地が分かるとより詳しく鑑定できます。分からない場合でも問題ありません。</p>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>予約のキャンセルはできますか？</summary>
+            <p>前日までのご連絡でキャンセル料はかかりません。当日キャンセルの場合は、鑑定料の50%を頂戴しております。</p>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>相談内容が他の人に知られることはありますか？</summary>
+            <p>鑑定はすべて個室で行い、ご相談内容を外部に漏らすことは一切ありません。安心してお話しください。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 予約フォーム（入力チェックはブラウザ標準の機能を使う） -->
+    <section class="section section--tint" id="reserve">
+      <div class="container container--narrow">
+        <h2 class="section__title" data-reveal><span>RESERVATION</span>鑑定のご予約</h2>
+        <form class="form" id="reserveForm" data-reveal>
+          <div class="form__row">
+            <label>
+              お名前 <span class="req">必須</span>
+              <input type="text" name="name" required autocomplete="name">
+            </label>
+            <label>
+              メールアドレス <span class="req">必須</span>
+              <input type="email" name="email" required autocomplete="email">
+            </label>
+          </div>
+          <div class="form__row">
+            <label>
+              ご希望のメニュー <span class="req">必須</span>
+              <select name="plan" required>
+                <option value="">選択してください</option>
+                <option>お試し鑑定（15分）</option>
+                <option>じっくり鑑定（30分）</option>
+                <option>オンライン鑑定（20分）</option>
+              </select>
+            </label>
+            <label>
+              ご希望日 <span class="req">必須</span>
+              <input type="date" name="date" required>
+            </label>
+          </div>
+          <label>
+            ご相談内容 <span class="opt">任意</span>
+            <textarea name="message" rows="4" placeholder="例）転職のタイミングについて相談したいです"></textarea>
+          </label>
+          <p class="form__msg" id="formMsg" role="status"></p>
+          <button type="submit" class="btn btn--gold">予約内容を送信する</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p class="footer__logo">☾ サンプル占いサロン</p>
+    <p class="footer__note">※本サイトは制作サンプルです。店舗・占い師・料金・占いの内容はすべて架空のものです。<br>占いの結果はエンターテインメントとしてお楽しみください。</p>
+    <p class="footer__copy"><small>&copy; 2026 SAMPLE FORTUNE SALON</small></p>
+  </footer>
+
+  <!-- ページトップへ戻るボタン -->
+  <a href="#top" class="to-top" aria-label="ページの先頭へ戻る"></a>
+
+</body>
+</html>

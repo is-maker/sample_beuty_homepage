@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サンプルのホームページ | SAMPLE HOMEPAGE</title>
+  <meta name="description" content="夜空の下で味わう、一杯の自家焙煎珈琲。サンプルのホームページ（架空店舗のサンプル）。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sample_1.css">
+  <!-- JS が動く環境でだけスクロール演出用の初期状態（非表示）を有効にする -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="sample_1.js" defer></script>
+</head>
+<body>
+
+  <!-- スクロール進捗バー -->
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- ヘッダー -->
+  <header class="header" id="top">
+    <div class="header__inner">
+      <a href="#top" class="logo">
+        <span class="logo__ja">サンプルのホームページ</span>
+        <span class="logo__en">SAMPLE HOMEPAGE</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="gnav" id="gnav">
+        <ul>
+          <li><a href="#concept">コンセプト</a></li>
+          <li><a href="#menu">メニュー</a></li>
+          <li><a href="#news">お知らせ</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#contact" class="gnav__cta">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- メインビジュアル -->
+    <section class="hero">
+      <div class="hero__stars" aria-hidden="true"></div>
+      <span class="hero__shooting" aria-hidden="true"></span>
+      <div class="hero__content">
+        <p class="hero__sub">Roasted under the stars</p>
+        <h1 class="hero__title">夜空の下で、<br>ゆっくり一杯。</h1>
+        <p class="hero__text">毎朝店内で焙煎する豆と、静かな時間をご用意しています。</p>
+        <a href="#menu" class="btn btn--light hero__btn">メニューを見る</a>
+      </div>
+      <a href="#concept" class="hero__scroll" aria-label="下へスクロール">Scroll</a>
+    </section>
+
+    <!-- コンセプト -->
+    <section class="section" id="concept">
+      <div class="container concept">
+        <div class="concept__visual" data-reveal>
+          <div class="concept__img" aria-hidden="true">
+            <span class="moon"></span>
+            <div class="cup">
+              <div class="steam"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <p class="concept__badge">Since<br>2026</p>
+        </div>
+        <div class="concept__body">
+          <h2 class="section__title" data-reveal><span>CONCEPT</span>コンセプト</h2>
+          <p data-reveal>当店は、住宅街の小さな路地にある自家焙煎のコーヒー店です。</p>
+          <p data-reveal>産地ごとの個性を大切にしながら、毎日飲んでも疲れない、やさしい味わいを目指して焙煎しています。仕事帰りに、読書のお供に。夜まで灯りをともしてお待ちしています。</p>
+          <ul class="features" data-reveal-group>
+            <li data-reveal><strong>自家焙煎</strong><span>毎朝少量ずつ焙煎</span></li>
+            <li data-reveal><strong><span class="num" data-count="22">22</span>時まで営業</strong><span>夜のひと休みに</span></li>
+            <li data-reveal><strong>全<span class="num" data-count="12">12</span>席</strong><span>静かな店内</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- メニュー -->
+    <section class="section section--tint" id="menu">
+      <div class="container">
+        <h2 class="section__title section__title--center" data-reveal><span>MENU</span>メニュー</h2>
+        <div class="menu-grid" data-reveal-group>
+          <article class="menu-card" data-reveal>
+            <div class="menu-card__img menu-card__img--1" aria-hidden="true"></div>
+            <div class="menu-card__body">
+              <h3>オリジナルブレンド</h3>
+              <p>深煎りのコクと、ほのかな甘み。当店いちばん人気の定番ブレンド。</p>
+              <p class="price">¥550</p>
+            </div>
+          </article>
+          <article class="menu-card" data-reveal>
+            <div class="menu-card__img menu-card__img--2" aria-hidden="true"></div>
+            <div class="menu-card__body">
+              <h3>エチオピア 浅煎り</h3>
+              <p>ベリーのような明るい酸味。ハンドドリップで丁寧に淹れます。</p>
+              <p class="price">¥650</p>
+            </div>
+          </article>
+          <article class="menu-card" data-reveal>
+            <div class="menu-card__img menu-card__img--3" aria-hidden="true"></div>
+            <div class="menu-card__body">
+              <h3>月夜のチーズケーキ</h3>
+              <p>しっとり濃厚なベイクドタイプ。珈琲とのセットで¥100引き。</p>
+              <p class="price">¥480</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- お知らせ -->
+    <section class="section" id="news">
+      <div class="container container--narrow">
+        <h2 class="section__title section__title--center" data-reveal><span>NEWS</span>お知らせ</h2>
+        <ul class="news-list" data-reveal-group>
+          <li data-reveal>
+            <time datetime="2026-09-20">2026.09.20</time>
+            <span class="tag">新商品</span>
+            <p>秋限定「焼き栗ラテ」の販売を開始しました。</p>
+          </li>
+          <li data-reveal>
+            <time datetime="2026-09-05">2026.09.05</time>
+            <span class="tag tag--info">営業</span>
+            <p>9月23日（祝）は臨時休業とさせていただきます。</p>
+          </li>
+          <li data-reveal>
+            <time datetime="2026-08-18">2026.08.18</time>
+            <span class="tag tag--event">イベント</span>
+            <p>ハンドドリップ体験会を開催します（定員6名・要予約）。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- アクセス -->
+    <section class="section section--tint" id="access">
+      <div class="container access">
+        <div class="access__info" data-reveal>
+          <h2 class="section__title"><span>ACCESS</span>店舗情報</h2>
+          <dl class="info-list">
+            <div><dt>住所</dt><dd>〒000-0000 ○○県○○市星見町1-2-3</dd></div>
+            <div><dt>営業時間</dt><dd>12:00〜22:00（L.O. 21:30）</dd></div>
+            <div><dt>定休日</dt><dd>毎週火曜日</dd></div>
+            <div><dt>電話</dt><dd>000-0000-0000</dd></div>
+            <div><dt>アクセス</dt><dd>○○駅 北口より徒歩5分</dd></div>
+          </dl>
+        </div>
+        <div class="access__map" role="img" aria-label="地図（サンプル）" data-reveal>
+          <span class="access__pin" aria-hidden="true"></span>
+          <span>MAP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="section" id="contact">
+      <div class="container container--narrow">
+        <h2 class="section__title section__title--center" data-reveal><span>CONTACT</span>お問い合わせ</h2>
+        <p class="contact__lead" data-reveal>ご予約・貸切のご相談など、お気軽にお問い合わせください。</p>
+        <form class="form" id="contactForm" novalidate data-reveal>
+          <label>
+            お名前 <span class="req">必須</span>
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label>
+            メールアドレス <span class="req">必須</span>
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+          <label>
+            お問い合わせ内容 <span class="req">必須</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <p class="form__msg" id="formMsg" role="status"></p>
+          <button type="submit" class="btn">送信する</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p class="footer__logo">サンプルのホームページ</p>
+    <p class="footer__note">※本サイトは制作サンプルです。店舗・住所・電話番号はすべて架空のものです。</p>
+    <p class="footer__copy"><small>&copy; 2026 SAMPLE HOMEPAGE</small></p>
+  </footer>
+
+  <!-- ページトップへ戻るボタン -->
+  <a href="#top" class="to-top" aria-label="ページの先頭へ戻る"></a>
+
+</body>
+</html>

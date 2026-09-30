@@ -1,568 +1,920 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hue. | 感度で選ぶ、ヘアサロンの本（サンプル）</title>
-  <meta name="description" content="編集部が一軒ずつ選んだヘアサロンだけを掲載する美容ポータル「hue.」。エリア・なりたい雰囲気・スタイリストから、あなたに似合うサロンを。（架空サイトのサンプル）">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+JP:wght@400;500&family=Zen+Old+Mincho:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sample_beauty.css">
-  <script src="sample_beauty.js" defer></script>
-</head>
-<body>
-
-  <!-- ヘッダー -->
-  <header class="header" id="top">
-    <div class="header__inner">
-      <a href="#top" class="logo" aria-label="hue. トップへ">
-        <span class="logo__mark">hue<i>.</i></span>
-        <span class="logo__tag">Beauty Salon Journal</span>
-      </a>
-
-      <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション">
-        <ul class="gnav__list">
-          <li><a href="#search"><span class="gnav__en">Search</span>サロンを探す</a></li>
-          <li><a href="#mood"><span class="gnav__en">Mood</span>雰囲気から</a></li>
-          <li><a href="#styles"><span class="gnav__en">Style</span>ヘアスタイル</a></li>
-          <li><a href="#stylists"><span class="gnav__en">Stylist</span>スタイリスト</a></li>
-          <li><a href="#journal"><span class="gnav__en">Journal</span>読みもの</a></li>
-        </ul>
-        <div class="gnav__sub">
-          <a href="#owner">掲載をご検討のサロン様</a>
-          <a href="#top">ログイン</a>
-        </div>
-      </nav>
-
-      <div class="header__actions">
-        <a href="#pickup" class="icon-btn" aria-label="お気に入り">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hue. | 感度で選ぶ、ヘアサロンの本（サンプル）</title>
+    <meta
+      name="description"
+      content="編集部が一軒ずつ選んだヘアサロンだけを掲載する美容ポータル「hue.」。エリア・なりたい雰囲気・スタイリストから、あなたに似合うサロンを。（架空サイトのサンプル）"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+JP:wght@400;500&family=Zen+Old+Mincho:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sample_beauty.css" />
+    <script src="sample_beauty.js" defer></script>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="header" id="top">
+      <div class="header__inner">
+        <a href="#top" class="logo" aria-label="hue. トップへ">
+          <span class="logo__mark">hue<i>.</i></span>
+          <span class="logo__tag">Beauty Salon Journal</span>
         </a>
-        <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
-          <span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
 
-  <main>
+        <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション">
+          <ul class="gnav__list">
+            <li>
+              <a href="#search"
+                ><span class="gnav__en">Search</span>サロンを探す</a
+              >
+            </li>
+            <li>
+              <a href="#mood"><span class="gnav__en">Mood</span>雰囲気から</a>
+            </li>
+            <li>
+              <a href="#styles"
+                ><span class="gnav__en">Style</span>ヘアスタイル</a
+              >
+            </li>
+            <li>
+              <a href="#stylists"
+                ><span class="gnav__en">Stylist</span>スタイリスト</a
+              >
+            </li>
+            <li>
+              <a href="#journal"
+                ><span class="gnav__en">Journal</span>読みもの</a
+              >
+            </li>
+          </ul>
+          <div class="gnav__sub">
+            <a href="#owner">掲載をご検討のサロン様</a>
+            <a href="#top">ログイン</a>
+          </div>
+        </nav>
 
-    <!-- ========== メインビジュアル ========== -->
-    <section class="hero">
-      <div class="hero__copy">
-        <p class="hero__eyebrow"><span>Vol.</span>26 — Autumn Issue</p>
-        <h1 class="hero__title">
-          <span class="hero__title-line">似合う、</span>
-          <span class="hero__title-line">の、その先へ。</span>
-        </h1>
-        <p class="hero__en">Find your own <em>hue.</em></p>
-        <p class="hero__lead">
-          編集部が一軒ずつ足を運び、<br>
-          技術と空気感に惚れたサロンだけを掲載。<br>
-          全国 1,280 のヘアサロンから、<br class="sp-only">あなたの「なりたい」に出会う場所。
-        </p>
-      </div>
-
-      <div class="hero__visual" aria-hidden="true">
-        <figure class="hero__img hero__img--main">
-          <div class="ph ph--portrait ph--a"></div>
-          <figcaption>Atelier NOA / Omotesando</figcaption>
-        </figure>
-        <figure class="hero__img hero__img--sub">
-          <div class="ph ph--b"></div>
-        </figure>
-        <figure class="hero__img hero__img--round">
-          <div class="ph ph--c"></div>
-        </figure>
-        <p class="hero__vertical">髪から、わたしを好きになる。</p>
-      </div>
-
-      <a href="#search" class="hero__scroll" aria-label="検索へスクロール"><span>Scroll</span></a>
-    </section>
-
-    <!-- ========== 検索 ========== -->
-    <section class="search" id="search" aria-labelledby="search-title">
-      <form class="search__box" id="searchForm">
-        <h2 class="search__title" id="search-title"><span class="en">Search</span>サロンを探す</h2>
-
-        <!-- タブ切り替え（CSSの :checked で表示を切り替え） -->
-        <div class="search__tabs" role="radiogroup" aria-label="検索方法">
-          <input type="radio" name="mode" id="mode-area" checked>
-          <label for="mode-area">エリア・駅</label>
-          <input type="radio" name="mode" id="mode-menu">
-          <label for="mode-menu">メニュー・こだわり</label>
-          <input type="radio" name="mode" id="mode-word">
-          <label for="mode-word">キーワード</label>
+        <div class="header__actions">
+          <a href="#pickup" class="icon-btn" aria-label="お気に入り">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+              />
+            </svg>
+          </a>
+          <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="メニューを開く"
+            aria-expanded="false"
+            aria-controls="gnav"
+          >
+            <span></span><span></span>
+          </button>
         </div>
+      </div>
+    </header>
 
-        <div class="search__panel search__panel--area">
-          <div class="field">
-            <label for="pref" class="field__label">エリア</label>
-            <select id="pref" class="field__control">
-              <option>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>福岡県</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="station" class="field__label">駅・街</label>
-            <select id="station" class="field__control">
-              <option>すべて</option><option>表参道・青山</option><option>代官山・中目黒</option><option>銀座・有楽町</option><option>恵比寿・広尾</option><option>吉祥寺</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="date" class="field__label">来店日</label>
-            <input type="date" id="date" class="field__control">
-          </div>
-        </div>
-
-        <div class="search__panel search__panel--menu">
-          <fieldset class="chips">
-            <legend class="field__label">メニュー</legend>
-            <label class="chip"><input type="checkbox" checked><span>カット</span></label>
-            <label class="chip"><input type="checkbox"><span>カラー</span></label>
-            <label class="chip"><input type="checkbox"><span>ブリーチ</span></label>
-            <label class="chip"><input type="checkbox"><span>パーマ</span></label>
-            <label class="chip"><input type="checkbox"><span>縮毛矯正</span></label>
-            <label class="chip"><input type="checkbox"><span>髪質改善</span></label>
-            <label class="chip"><input type="checkbox"><span>ヘッドスパ</span></label>
-          </fieldset>
-          <fieldset class="chips">
-            <legend class="field__label">こだわり</legend>
-            <label class="chip"><input type="checkbox"><span>個室あり</span></label>
-            <label class="chip"><input type="checkbox"><span>当日予約OK</span></label>
-            <label class="chip"><input type="checkbox"><span>20時以降も営業</span></label>
-            <label class="chip"><input type="checkbox"><span>オーガニック薬剤</span></label>
-            <label class="chip"><input type="checkbox"><span>キッズスペース</span></label>
-          </fieldset>
-        </div>
-
-        <div class="search__panel search__panel--word">
-          <div class="field field--wide">
-            <label for="keyword" class="field__label">キーワード</label>
-            <input type="search" id="keyword" class="field__control" placeholder="サロン名・スタイリスト名・「くすみピンク」など">
-          </div>
-          <p class="search__suggest">
-            <span>よく検索されています</span>
-            <a href="#styles">#透明感カラー</a>
-            <a href="#styles">#韓国風レイヤー</a>
-            <a href="#styles">#耳かけショート</a>
-            <a href="#styles">#白髪ぼかし</a>
+    <main>
+      <!-- ========== メインビジュアル ========== -->
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="hero__eyebrow"><span>Vol.</span>26 — Autumn Issue</p>
+          <h1 class="hero__title">
+            <span class="hero__title-line">似合う、その先へ。</span>
+            <span class="hero__title-line"></span>
+          </h1>
+          <p class="hero__en">Find your own <em>hue.</em></p>
+          <p class="hero__lead">
+            編集部が一軒ずつ足を運び、<br />
+            技術と空気感に惚れたサロンだけを掲載。<br />
+            全国 1,280 のヘアサロンから、<br
+              class="sp-only"
+            />あなたの「なりたい」に出会う場所。
           </p>
         </div>
 
-        <div class="search__foot">
-          <p class="search__count"><em>284</em> 件のサロンが見つかりました</p>
-          <button type="submit" class="btn btn--dark">
-            この条件で探す
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-        <p class="search__msg" id="searchMsg" role="status"></p>
-      </form>
-    </section>
-
-    <!-- ========== 流れるテキスト ========== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Cut</span><i>✦</i><span>Color</span><i>✦</i><span>Treatment</span><i>✦</i><span>Perm</span><i>✦</i><span>Head Spa</span><i>✦</i><span>Styling</span><i>✦</i>
-        <span>Cut</span><i>✦</i><span>Color</span><i>✦</i><span>Treatment</span><i>✦</i><span>Perm</span><i>✦</i><span>Head Spa</span><i>✦</i><span>Styling</span><i>✦</i>
-      </div>
-    </div>
-
-    <!-- ========== なりたい雰囲気から探す ========== -->
-    <section class="section mood" id="mood" aria-labelledby="mood-title">
-      <div class="section__head">
-        <p class="section__num">01</p>
-        <h2 class="section__title" id="mood-title"><span class="en">Search by Mood</span>なりたい雰囲気から探す</h2>
-        <p class="section__desc">メニュー名がわからなくても大丈夫。<br>気になる雰囲気を選ぶだけで、得意なサロンが見つかります。</p>
-      </div>
-
-      <ul class="mood__list">
-        <li class="mood__item reveal">
-          <a href="#pickup">
-            <div class="ph ph--portrait ph--d"></div>
-            <p class="mood__en">Sheer</p>
-            <p class="mood__ja">透明感カラー</p>
-            <span class="mood__count">412 salons</span>
-          </a>
-        </li>
-        <li class="mood__item reveal">
-          <a href="#pickup">
-            <div class="ph ph--portrait ph--e"></div>
-            <p class="mood__en">Layered</p>
-            <p class="mood__ja">韓国風レイヤー</p>
-            <span class="mood__count">268 salons</span>
-          </a>
-        </li>
-        <li class="mood__item reveal">
-          <a href="#pickup">
-            <div class="ph ph--portrait ph--f"></div>
-            <p class="mood__en">Chic Short</p>
-            <p class="mood__ja">大人のショート</p>
-            <span class="mood__count">305 salons</span>
-          </a>
-        </li>
-        <li class="mood__item reveal">
-          <a href="#pickup">
-            <div class="ph ph--portrait ph--g"></div>
-            <p class="mood__en">Silky</p>
-            <p class="mood__ja">髪質改善・ツヤ髪</p>
-            <span class="mood__count">377 salons</span>
-          </a>
-        </li>
-        <li class="mood__item reveal">
-          <a href="#pickup">
-            <div class="ph ph--portrait ph--h"></div>
-            <p class="mood__en">Grey Blend</p>
-            <p class="mood__ja">白髪ぼかし</p>
-            <span class="mood__count">189 salons</span>
-          </a>
-        </li>
-        <li class="mood__item reveal">
-          <a href="#pickup">
-            <div class="ph ph--i"></div>
-            <p class="mood__en">Relax</p>
-            <p class="mood__ja">ヘッドスパで癒される</p>
-            <span class="mood__count">226 salons</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ========== 注目のサロン ========== -->
-    <section class="section pickup" id="pickup" aria-labelledby="pickup-title">
-      <div class="section__head section__head--row">
-        <div>
-          <p class="section__num">02</p>
-          <h2 class="section__title" id="pickup-title"><span class="en">Editor's Pick</span>今月、編集部が推すサロン</h2>
-        </div>
-        <a href="#search" class="link-more">すべてのサロンを見る<span aria-hidden="true">→</span></a>
-      </div>
-
-      <div class="salon-grid">
-        <!-- 1枚目は大きく見せる -->
-        <article class="salon salon--feature reveal">
-          <div class="salon__img">
+        <div class="hero__visual" aria-hidden="true">
+          <figure class="hero__img hero__img--main">
             <div class="ph ph--portrait ph--a"></div>
-            <span class="salon__badge">Editor's Pick</span>
-            <label class="fav" aria-label="お気に入りに追加"><input type="checkbox"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg></label>
-          </div>
-          <div class="salon__body">
-            <p class="salon__area">表参道 ・ 徒歩3分</p>
-            <h3 class="salon__name">Atelier NOA <span>アトリエ ノア</span></h3>
-            <p class="salon__catch">“光に透けたとき”を設計する、ハイトーンに強いアトリエ。ブリーチなしでも抜け感のある色味を。</p>
-            <ul class="tags"><li>透明感カラー</li><li>髪質改善</li><li>個室あり</li></ul>
-            <div class="salon__meta">
-              <p class="rating"><span class="rating__star">★</span>4.92<span class="rating__count">（312件）</span></p>
-              <p class="salon__price">カット <em>¥7,700〜</em></p>
-            </div>
-            <p class="salon__slot"><span class="dot"></span>本日 16:00 以降 空きあり</p>
-          </div>
-        </article>
-
-        <article class="salon reveal">
-          <div class="salon__img">
-            <div class="ph ph--e"></div>
-            <label class="fav" aria-label="お気に入りに追加"><input type="checkbox"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg></label>
-          </div>
-          <div class="salon__body">
-            <p class="salon__area">中目黒 ・ 徒歩5分</p>
-            <h3 class="salon__name">roji hair <span>ロジ ヘアー</span></h3>
-            <ul class="tags"><li>韓国風レイヤー</li><li>当日予約OK</li></ul>
-            <div class="salon__meta">
-              <p class="rating"><span class="rating__star">★</span>4.86<span class="rating__count">（198件）</span></p>
-              <p class="salon__price">カット <em>¥6,600〜</em></p>
-            </div>
-            <p class="salon__slot"><span class="dot"></span>本日 18:30 空きあり</p>
-          </div>
-        </article>
-
-        <article class="salon reveal">
-          <div class="salon__img">
-            <div class="ph ph--portrait ph--f"></div>
-            <span class="salon__badge salon__badge--new">New Open</span>
-            <label class="fav" aria-label="お気に入りに追加"><input type="checkbox"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg></label>
-          </div>
-          <div class="salon__body">
-            <p class="salon__area">代官山 ・ 徒歩2分</p>
-            <h3 class="salon__name">MAISON ÉTÉ <span>メゾン エテ</span></h3>
-            <ul class="tags"><li>大人のショート</li><li>オーガニック</li></ul>
-            <div class="salon__meta">
-              <p class="rating"><span class="rating__star">★</span>4.95<span class="rating__count">（64件）</span></p>
-              <p class="salon__price">カット <em>¥8,800〜</em></p>
-            </div>
-            <p class="salon__slot salon__slot--few"><span class="dot"></span>明日 11:00 残りわずか</p>
-          </div>
-        </article>
-
-        <article class="salon reveal">
-          <div class="salon__img">
-            <div class="ph ph--g"></div>
-            <label class="fav" aria-label="お気に入りに追加"><input type="checkbox"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg></label>
-          </div>
-          <div class="salon__body">
-            <p class="salon__area">銀座 ・ 徒歩4分</p>
-            <h3 class="salon__name">hazel <span>ヘーゼル</span></h3>
-            <ul class="tags"><li>髪質改善</li><li>20時以降OK</li></ul>
-            <div class="salon__meta">
-              <p class="rating"><span class="rating__star">★</span>4.81<span class="rating__count">（421件）</span></p>
-              <p class="salon__price">カット <em>¥7,150〜</em></p>
-            </div>
-            <p class="salon__slot"><span class="dot"></span>本日 20:00 空きあり</p>
-          </div>
-        </article>
-
-        <article class="salon reveal">
-          <div class="salon__img">
-            <div class="ph ph--portrait ph--h"></div>
-            <label class="fav" aria-label="お気に入りに追加"><input type="checkbox"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg></label>
-          </div>
-          <div class="salon__body">
-            <p class="salon__area">吉祥寺 ・ 徒歩6分</p>
-            <h3 class="salon__name">lull. <span>ラル</span></h3>
-            <ul class="tags"><li>白髪ぼかし</li><li>キッズスペース</li></ul>
-            <div class="salon__meta">
-              <p class="rating"><span class="rating__star">★</span>4.78<span class="rating__count">（156件）</span></p>
-              <p class="salon__price">カット <em>¥5,500〜</em></p>
-            </div>
-            <p class="salon__slot"><span class="dot"></span>明日 10:00 空きあり</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ========== コンセプト（ポータルの考え方） ========== -->
-    <section class="concept" aria-labelledby="concept-title">
-      <div class="concept__inner">
-        <p class="concept__en">Our Editorial Policy</p>
-        <h2 class="concept__title" id="concept-title">
-          「たくさん」より、<br>「ちゃんと、いい」を。
-        </h2>
-        <ol class="concept__list">
-          <li class="reveal">
-            <span class="concept__num">i.</span>
-            <h3>一軒ずつ、編集部が訪問</h3>
-            <p>掲載は審査制。技術・接客・空間を、実際にカットを受けて確かめています。</p>
-          </li>
-          <li class="reveal">
-            <span class="concept__num">ii.</span>
-            <h3>写真は、加工なしの実例だけ</h3>
-            <p>過度なレタッチを禁止。あなたの髪でも再現できるスタイルだけを並べます。</p>
-          </li>
-          <li class="reveal">
-            <span class="concept__num">iii.</span>
-            <h3>口コミは、来店した人だけ</h3>
-            <p>予約・来店が確認できたお客さまの声のみ掲載。信頼できる評価で選べます。</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ========== スタイルギャラリー ========== -->
-    <section class="section styles" id="styles" aria-labelledby="styles-title">
-      <div class="section__head">
-        <p class="section__num">03</p>
-        <h2 class="section__title" id="styles-title"><span class="en">Style Gallery</span>スタイルから探す</h2>
-        <p class="section__desc">スタイル写真から、そのまま担当スタイリストに予約できます。</p>
-      </div>
-
-      <!-- 長さで絞り込み（CSSの :has() で表示を切り替え） -->
-      <div class="filter" role="radiogroup" aria-label="髪の長さで絞り込み">
-        <input type="radio" name="length" id="len-all" checked><label for="len-all">All</label>
-        <input type="radio" name="length" id="len-short"><label for="len-short">Short</label>
-        <input type="radio" name="length" id="len-bob"><label for="len-bob">Bob</label>
-        <input type="radio" name="length" id="len-medium"><label for="len-medium">Medium</label>
-        <input type="radio" name="length" id="len-long"><label for="len-long">Long</label>
-      </div>
-
-      <ul class="style-grid">
-        <li class="style-card is-short is-tall">
-          <a href="#stylists"><div class="ph ph--portrait ph--f"></div>
-            <div class="style-card__info"><p class="style-card__name">耳かけハンサムショート</p><p class="style-card__by">by Ren / MAISON ÉTÉ</p></div></a>
-        </li>
-        <li class="style-card is-bob">
-          <a href="#stylists"><div class="ph ph--portrait ph--d"></div>
-            <div class="style-card__info"><p class="style-card__name">切りっぱなしミニボブ</p><p class="style-card__by">by Yui / Atelier NOA</p></div></a>
-        </li>
-        <li class="style-card is-long">
-          <a href="#stylists"><div class="ph ph--portrait ph--e"></div>
-            <div class="style-card__info"><p class="style-card__name">くびれレイヤーロング</p><p class="style-card__by">by Sora / roji hair</p></div></a>
-        </li>
-        <li class="style-card is-medium is-tall">
-          <a href="#stylists"><div class="ph ph--portrait ph--g"></div>
-            <div class="style-card__info"><p class="style-card__name">ツヤ髪ワンカールミディ</p><p class="style-card__by">by Mio / hazel</p></div></a>
-        </li>
-        <li class="style-card is-bob is-tall">
-          <a href="#stylists"><div class="ph ph--portrait ph--b"></div>
-            <div class="style-card__info"><p class="style-card__name">ミルクティーベージュボブ</p><p class="style-card__by">by Yui / Atelier NOA</p></div></a>
-        </li>
-        <li class="style-card is-short">
-          <a href="#stylists"><div class="ph ph--portrait ph--h"></div>
-            <div class="style-card__info"><p class="style-card__name">白髪ぼかしマッシュショート</p><p class="style-card__by">by Kaho / lull.</p></div></a>
-        </li>
-        <li class="style-card is-medium">
-          <a href="#stylists"><div class="ph ph--portrait ph--c"></div>
-            <div class="style-card__info"><p class="style-card__name">ラベンダーグレージュ</p><p class="style-card__by">by Sora / roji hair</p></div></a>
-        </li>
-        <li class="style-card is-long is-tall">
-          <a href="#stylists"><div class="ph ph--portrait ph--a"></div>
-            <div class="style-card__info"><p class="style-card__name">透け感ハイライトロング</p><p class="style-card__by">by Yui / Atelier NOA</p></div></a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ========== スタイリスト ========== -->
-    <section class="section stylists" id="stylists" aria-labelledby="stylists-title">
-      <div class="section__head section__head--row">
-        <div>
-          <p class="section__num">04</p>
-          <h2 class="section__title" id="stylists-title"><span class="en">Stylists</span>「この人に切ってほしい」から</h2>
+            <figcaption>Atelier NOA / Omotesando</figcaption>
+          </figure>
+          <figure class="hero__img hero__img--sub">
+            <div class="ph ph--b"></div>
+          </figure>
+          <figure class="hero__img hero__img--round">
+            <div class="ph ph--c"></div>
+          </figure>
+          <p class="hero__vertical">髪から、わたしを好きになる。</p>
         </div>
-        <a href="#stylists" class="link-more">スタイリスト一覧<span aria-hidden="true">→</span></a>
-      </div>
 
-      <ul class="stylist-list">
-        <li class="stylist">
-          <div class="stylist__photo"><div class="ph ph--portrait ph--a"></div></div>
-          <p class="stylist__role">Director</p>
-          <h3 class="stylist__name">Yui Nakano</h3>
-          <p class="stylist__salon">Atelier NOA ／ 表参道</p>
-          <p class="stylist__skill">ブリーチなしの透明感カラー</p>
-          <p class="stylist__rate">★ 4.97 ・ 指名 1,204件</p>
-        </li>
-        <li class="stylist">
-          <div class="stylist__photo"><div class="ph ph--portrait ph--e"></div></div>
-          <p class="stylist__role">Top Stylist</p>
-          <h3 class="stylist__name">Sora Ikeda</h3>
-          <p class="stylist__salon">roji hair ／ 中目黒</p>
-          <p class="stylist__skill">顔まわりレイヤーの設計</p>
-          <p class="stylist__rate">★ 4.91 ・ 指名 876件</p>
-        </li>
-        <li class="stylist">
-          <div class="stylist__photo"><div class="ph ph--portrait ph--f"></div></div>
-          <p class="stylist__role">Owner</p>
-          <h3 class="stylist__name">Ren Aoki</h3>
-          <p class="stylist__salon">MAISON ÉTÉ ／ 代官山</p>
-          <p class="stylist__skill">骨格から考えるショート</p>
-          <p class="stylist__rate">★ 4.95 ・ 指名 652件</p>
-        </li>
-        <li class="stylist">
-          <div class="stylist__photo"><div class="ph ph--portrait ph--g"></div></div>
-          <p class="stylist__role">Stylist</p>
-          <h3 class="stylist__name">Mio Saeki</h3>
-          <p class="stylist__salon">hazel ／ 銀座</p>
-          <p class="stylist__skill">酸熱トリートメント・髪質改善</p>
-          <p class="stylist__rate">★ 4.88 ・ 指名 931件</p>
-        </li>
-        <li class="stylist">
-          <div class="stylist__photo"><div class="ph ph--portrait ph--h"></div></div>
-          <p class="stylist__role">Stylist</p>
-          <h3 class="stylist__name">Kaho Mori</h3>
-          <p class="stylist__salon">lull. ／ 吉祥寺</p>
-          <p class="stylist__skill">白髪を活かすグレイカラー</p>
-          <p class="stylist__rate">★ 4.90 ・ 指名 488件</p>
-        </li>
-      </ul>
-    </section>
+        <a href="#search" class="hero__scroll" aria-label="検索へスクロール"
+          ><span>Scroll</span></a
+        >
+      </section>
 
-    <!-- ========== 読みもの ========== -->
-    <section class="section journal" id="journal" aria-labelledby="journal-title">
-      <div class="section__head section__head--row">
-        <div>
-          <p class="section__num">05</p>
-          <h2 class="section__title" id="journal-title"><span class="en">Journal</span>髪と、わたしの読みもの</h2>
+      <!-- ========== 検索 ========== -->
+      <section class="search" id="search" aria-labelledby="search-title">
+        <form class="search__box" id="searchForm">
+          <h2 class="search__title" id="search-title">
+            <span class="en">Search</span>サロンを探す
+          </h2>
+
+          <!-- タブ切り替え（CSSの :checked で表示を切り替え） -->
+          <div class="search__tabs" role="radiogroup" aria-label="検索方法">
+            <input type="radio" name="mode" id="mode-area" checked />
+            <label for="mode-area">エリア・駅</label>
+            <input type="radio" name="mode" id="mode-menu" />
+            <label for="mode-menu">メニュー・こだわり</label>
+            <input type="radio" name="mode" id="mode-word" />
+            <label for="mode-word">キーワード</label>
+          </div>
+
+          <div class="search__panel search__panel--area">
+            <div class="field">
+              <label for="pref" class="field__label">エリア</label>
+              <select id="pref" class="field__control">
+                <option>東京都</option>
+                <option>神奈川県</option>
+                <option>大阪府</option>
+                <option>愛知県</option>
+                <option>福岡県</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="station" class="field__label">駅・街</label>
+              <select id="station" class="field__control">
+                <option>すべて</option>
+                <option>表参道・青山</option>
+                <option>代官山・中目黒</option>
+                <option>銀座・有楽町</option>
+                <option>恵比寿・広尾</option>
+                <option>吉祥寺</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date" class="field__label">来店日</label>
+              <input type="date" id="date" class="field__control" />
+            </div>
+          </div>
+
+          <div class="search__panel search__panel--menu">
+            <fieldset class="chips">
+              <legend class="field__label">メニュー</legend>
+              <label class="chip"
+                ><input type="checkbox" checked /><span>カット</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>カラー</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>ブリーチ</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>パーマ</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>縮毛矯正</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>髪質改善</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>ヘッドスパ</span></label
+              >
+            </fieldset>
+            <fieldset class="chips">
+              <legend class="field__label">こだわり</legend>
+              <label class="chip"
+                ><input type="checkbox" /><span>個室あり</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>当日予約OK</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>20時以降も営業</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>オーガニック薬剤</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" /><span>キッズスペース</span></label
+              >
+            </fieldset>
+          </div>
+
+          <div class="search__panel search__panel--word">
+            <div class="field field--wide">
+              <label for="keyword" class="field__label">キーワード</label>
+              <input
+                type="search"
+                id="keyword"
+                class="field__control"
+                placeholder="サロン名・スタイリスト名・「くすみピンク」など"
+              />
+            </div>
+            <p class="search__suggest">
+              <span>よく検索されています</span>
+              <a href="#styles">#透明感カラー</a>
+              <a href="#styles">#韓国風レイヤー</a>
+              <a href="#styles">#耳かけショート</a>
+              <a href="#styles">#白髪ぼかし</a>
+            </p>
+          </div>
+
+          <div class="search__foot">
+            <p class="search__count"><em>284</em> 件のサロンが見つかりました</p>
+            <button type="submit" class="btn btn--dark">
+              この条件で探す
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+          <p class="search__msg" id="searchMsg" role="status"></p>
+        </form>
+      </section>
+
+      <!-- ========== 流れるテキスト ========== -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Cut</span><i>✦</i><span>Color</span><i>✦</i
+          ><span>Treatment</span><i>✦</i><span>Perm</span><i>✦</i
+          ><span>Head Spa</span><i>✦</i><span>Styling</span><i>✦</i>
+          <span>Cut</span><i>✦</i><span>Color</span><i>✦</i
+          ><span>Treatment</span><i>✦</i><span>Perm</span><i>✦</i
+          ><span>Head Spa</span><i>✦</i><span>Styling</span><i>✦</i>
         </div>
-        <a href="#journal" class="link-more">記事一覧<span aria-hidden="true">→</span></a>
       </div>
 
-      <div class="journal__grid">
-        <article class="article article--main reveal">
-          <a href="#journal">
-            <div class="article__img"><div class="ph ph--portrait ph--b"></div></div>
-            <p class="article__cat">Feature ／ 2026.09.24</p>
-            <h3 class="article__title">秋のくすみカラー、<br>“肌がきれいに見える”色の選び方</h3>
-            <p class="article__excerpt">パーソナルカラーだけでは決めきれない、髪色と肌の関係。人気カラーリスト3名に、この秋の正解を聞きました。</p>
-          </a>
-        </article>
-        <article class="article reveal">
-          <a href="#journal">
-            <div class="article__img"><div class="ph ph--i"></div></div>
-            <p class="article__cat">Interview ／ 2026.09.18</p>
-            <h3 class="article__title">表参道で12年。Yui Nakanoが語る「似合わせ」の正体</h3>
-          </a>
-        </article>
-        <article class="article reveal">
-          <a href="#journal">
-            <div class="article__img"><div class="ph ph--c"></div></div>
-            <p class="article__cat">Howto ／ 2026.09.10</p>
-            <h3 class="article__title">美容室でのオーダー、写真1枚で伝わる“言い方”のコツ</h3>
-          </a>
-        </article>
-      </div>
-    </section>
+      <!-- ========== なりたい雰囲気から探す ========== -->
+      <section class="section mood" id="mood" aria-labelledby="mood-title">
+        <div class="section__head">
+          <p class="section__num">01</p>
+          <h2 class="section__title" id="mood-title">
+            <span class="en">Search by Mood</span>なりたい雰囲気から探す
+          </h2>
+          <p class="section__desc">
+            メニュー名がわからなくても大丈夫。<br />気になる雰囲気を選ぶだけで、得意なサロンが見つかります。
+          </p>
+        </div>
 
-    <!-- ========== エリアから探す ========== -->
-    <section class="section area" aria-labelledby="area-title">
-      <div class="area__inner">
-        <h2 class="section__title" id="area-title"><span class="en">Area</span>エリアから探す</h2>
-        <dl class="area__list">
-          <div><dt>関東</dt><dd><a href="#search">東京</a><a href="#search">神奈川</a><a href="#search">埼玉</a><a href="#search">千葉</a></dd></div>
-          <div><dt>関西</dt><dd><a href="#search">大阪</a><a href="#search">京都</a><a href="#search">兵庫</a></dd></div>
-          <div><dt>東海</dt><dd><a href="#search">愛知</a><a href="#search">静岡</a></dd></div>
-          <div><dt>九州</dt><dd><a href="#search">福岡</a><a href="#search">熊本</a></dd></div>
-          <div><dt>北海道・東北</dt><dd><a href="#search">北海道</a><a href="#search">宮城</a></dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <!-- ========== 掲載希望のサロン向け ========== -->
-    <section class="owner" id="owner" aria-labelledby="owner-title">
-      <div class="owner__visual" aria-hidden="true"><div class="ph ph--i"></div></div>
-      <div class="owner__body">
-        <p class="owner__en">For Salon Owners</p>
-        <h2 class="owner__title" id="owner-title">あなたのサロンの「空気」まで、<br>届けませんか。</h2>
-        <p>hue. は審査制の美容ポータルです。価格ではなく、技術と世界観で選ばれたいサロンさまを募集しています。掲載料は来店成果に応じた完全成果報酬制。</p>
-        <a href="#owner" class="btn btn--light">掲載について詳しく見る
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- フッター -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <p class="logo__mark">hue<i>.</i></p>
-        <p class="footer__copy">感度で選ぶ、ヘアサロンの本。</p>
-      </div>
-      <nav class="footer__nav" aria-label="フッターナビゲーション">
-        <ul>
-          <li><a href="#search">サロンを探す</a></li>
-          <li><a href="#styles">ヘアスタイル</a></li>
-          <li><a href="#stylists">スタイリスト</a></li>
-          <li><a href="#journal">読みもの</a></li>
+        <ul class="mood__list">
+          <li class="mood__item reveal">
+            <a href="#pickup">
+              <div class="ph ph--portrait ph--d"></div>
+              <p class="mood__en">Sheer</p>
+              <p class="mood__ja">透明感カラー</p>
+              <span class="mood__count">412 salons</span>
+            </a>
+          </li>
+          <li class="mood__item reveal">
+            <a href="#pickup">
+              <div class="ph ph--portrait ph--e"></div>
+              <p class="mood__en">Layered</p>
+              <p class="mood__ja">韓国風レイヤー</p>
+              <span class="mood__count">268 salons</span>
+            </a>
+          </li>
+          <li class="mood__item reveal">
+            <a href="#pickup">
+              <div class="ph ph--portrait ph--f"></div>
+              <p class="mood__en">Chic Short</p>
+              <p class="mood__ja">大人のショート</p>
+              <span class="mood__count">305 salons</span>
+            </a>
+          </li>
+          <li class="mood__item reveal">
+            <a href="#pickup">
+              <div class="ph ph--portrait ph--g"></div>
+              <p class="mood__en">Silky</p>
+              <p class="mood__ja">髪質改善・ツヤ髪</p>
+              <span class="mood__count">377 salons</span>
+            </a>
+          </li>
+          <li class="mood__item reveal">
+            <a href="#pickup">
+              <div class="ph ph--portrait ph--h"></div>
+              <p class="mood__en">Grey Blend</p>
+              <p class="mood__ja">白髪ぼかし</p>
+              <span class="mood__count">189 salons</span>
+            </a>
+          </li>
+          <li class="mood__item reveal">
+            <a href="#pickup">
+              <div class="ph ph--i"></div>
+              <p class="mood__en">Relax</p>
+              <p class="mood__ja">ヘッドスパで癒される</p>
+              <span class="mood__count">226 salons</span>
+            </a>
+          </li>
         </ul>
-        <ul>
-          <li><a href="#owner">掲載をご検討のサロン様</a></li>
-          <li><a href="#top">運営会社</a></li>
-          <li><a href="#top">利用規約</a></li>
-          <li><a href="#top">プライバシーポリシー</a></li>
+      </section>
+
+      <!-- ========== 注目のサロン ========== -->
+      <section
+        class="section pickup"
+        id="pickup"
+        aria-labelledby="pickup-title"
+      >
+        <div class="section__head section__head--row">
+          <div>
+            <p class="section__num">02</p>
+            <h2 class="section__title" id="pickup-title">
+              <span class="en">Editor's Pick</span>今月、編集部が推すサロン
+            </h2>
+          </div>
+          <a href="#search" class="link-more"
+            >すべてのサロンを見る<span aria-hidden="true">→</span></a
+          >
+        </div>
+
+        <div class="salon-grid">
+          <!-- 1枚目は大きく見せる -->
+          <article class="salon salon--feature reveal">
+            <div class="salon__img">
+              <div class="ph ph--portrait ph--a"></div>
+              <span class="salon__badge">Editor's Pick</span>
+              <label class="fav" aria-label="お気に入りに追加"
+                ><input type="checkbox" /><svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+                  /></svg
+              ></label>
+            </div>
+            <div class="salon__body">
+              <p class="salon__area">表参道 ・ 徒歩3分</p>
+              <h3 class="salon__name">
+                Atelier NOA <span>アトリエ ノア</span>
+              </h3>
+              <p class="salon__catch">
+                “光に透けたとき”を設計する、ハイトーンに強いアトリエ。ブリーチなしでも抜け感のある色味を。
+              </p>
+              <ul class="tags">
+                <li>透明感カラー</li>
+                <li>髪質改善</li>
+                <li>個室あり</li>
+              </ul>
+              <div class="salon__meta">
+                <p class="rating">
+                  <span class="rating__star">★</span>4.92<span
+                    class="rating__count"
+                    >（312件）</span
+                  >
+                </p>
+                <p class="salon__price">カット <em>¥7,700〜</em></p>
+              </div>
+              <p class="salon__slot">
+                <span class="dot"></span>本日 16:00 以降 空きあり
+              </p>
+            </div>
+          </article>
+
+          <article class="salon reveal">
+            <div class="salon__img">
+              <div class="ph ph--e"></div>
+              <label class="fav" aria-label="お気に入りに追加"
+                ><input type="checkbox" /><svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+                  /></svg
+              ></label>
+            </div>
+            <div class="salon__body">
+              <p class="salon__area">中目黒 ・ 徒歩5分</p>
+              <h3 class="salon__name">roji hair <span>ロジ ヘアー</span></h3>
+              <ul class="tags">
+                <li>韓国風レイヤー</li>
+                <li>当日予約OK</li>
+              </ul>
+              <div class="salon__meta">
+                <p class="rating">
+                  <span class="rating__star">★</span>4.86<span
+                    class="rating__count"
+                    >（198件）</span
+                  >
+                </p>
+                <p class="salon__price">カット <em>¥6,600〜</em></p>
+              </div>
+              <p class="salon__slot">
+                <span class="dot"></span>本日 18:30 空きあり
+              </p>
+            </div>
+          </article>
+
+          <article class="salon reveal">
+            <div class="salon__img">
+              <div class="ph ph--portrait ph--f"></div>
+              <span class="salon__badge salon__badge--new">New Open</span>
+              <label class="fav" aria-label="お気に入りに追加"
+                ><input type="checkbox" /><svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+                  /></svg
+              ></label>
+            </div>
+            <div class="salon__body">
+              <p class="salon__area">代官山 ・ 徒歩2分</p>
+              <h3 class="salon__name">MAISON ÉTÉ <span>メゾン エテ</span></h3>
+              <ul class="tags">
+                <li>大人のショート</li>
+                <li>オーガニック</li>
+              </ul>
+              <div class="salon__meta">
+                <p class="rating">
+                  <span class="rating__star">★</span>4.95<span
+                    class="rating__count"
+                    >（64件）</span
+                  >
+                </p>
+                <p class="salon__price">カット <em>¥8,800〜</em></p>
+              </div>
+              <p class="salon__slot salon__slot--few">
+                <span class="dot"></span>明日 11:00 残りわずか
+              </p>
+            </div>
+          </article>
+
+          <article class="salon reveal">
+            <div class="salon__img">
+              <div class="ph ph--g"></div>
+              <label class="fav" aria-label="お気に入りに追加"
+                ><input type="checkbox" /><svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+                  /></svg
+              ></label>
+            </div>
+            <div class="salon__body">
+              <p class="salon__area">銀座 ・ 徒歩4分</p>
+              <h3 class="salon__name">hazel <span>ヘーゼル</span></h3>
+              <ul class="tags">
+                <li>髪質改善</li>
+                <li>20時以降OK</li>
+              </ul>
+              <div class="salon__meta">
+                <p class="rating">
+                  <span class="rating__star">★</span>4.81<span
+                    class="rating__count"
+                    >（421件）</span
+                  >
+                </p>
+                <p class="salon__price">カット <em>¥7,150〜</em></p>
+              </div>
+              <p class="salon__slot">
+                <span class="dot"></span>本日 20:00 空きあり
+              </p>
+            </div>
+          </article>
+
+          <article class="salon reveal">
+            <div class="salon__img">
+              <div class="ph ph--portrait ph--h"></div>
+              <label class="fav" aria-label="お気に入りに追加"
+                ><input type="checkbox" /><svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+                  /></svg
+              ></label>
+            </div>
+            <div class="salon__body">
+              <p class="salon__area">吉祥寺 ・ 徒歩6分</p>
+              <h3 class="salon__name">lull. <span>ラル</span></h3>
+              <ul class="tags">
+                <li>白髪ぼかし</li>
+                <li>キッズスペース</li>
+              </ul>
+              <div class="salon__meta">
+                <p class="rating">
+                  <span class="rating__star">★</span>4.78<span
+                    class="rating__count"
+                    >（156件）</span
+                  >
+                </p>
+                <p class="salon__price">カット <em>¥5,500〜</em></p>
+              </div>
+              <p class="salon__slot">
+                <span class="dot"></span>明日 10:00 空きあり
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== コンセプト（ポータルの考え方） ========== -->
+      <section class="concept" aria-labelledby="concept-title">
+        <div class="concept__inner">
+          <p class="concept__en">Our Editorial Policy</p>
+          <h2 class="concept__title" id="concept-title">
+            「たくさん」より、<br />「ちゃんと、いい」を。
+          </h2>
+          <ol class="concept__list">
+            <li class="reveal">
+              <span class="concept__num">i.</span>
+              <h3>一軒ずつ、編集部が訪問</h3>
+              <p>
+                掲載は審査制。技術・接客・空間を、実際にカットを受けて確かめています。
+              </p>
+            </li>
+            <li class="reveal">
+              <span class="concept__num">ii.</span>
+              <h3>写真は、加工なしの実例だけ</h3>
+              <p>
+                過度なレタッチを禁止。あなたの髪でも再現できるスタイルだけを並べます。
+              </p>
+            </li>
+            <li class="reveal">
+              <span class="concept__num">iii.</span>
+              <h3>口コミは、来店した人だけ</h3>
+              <p>
+                予約・来店が確認できたお客さまの声のみ掲載。信頼できる評価で選べます。
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ========== スタイルギャラリー ========== -->
+      <section
+        class="section styles"
+        id="styles"
+        aria-labelledby="styles-title"
+      >
+        <div class="section__head">
+          <p class="section__num">03</p>
+          <h2 class="section__title" id="styles-title">
+            <span class="en">Style Gallery</span>スタイルから探す
+          </h2>
+          <p class="section__desc">
+            スタイル写真から、そのまま担当スタイリストに予約できます。
+          </p>
+        </div>
+
+        <!-- 長さで絞り込み（CSSの :has() で表示を切り替え） -->
+        <div class="filter" role="radiogroup" aria-label="髪の長さで絞り込み">
+          <input type="radio" name="length" id="len-all" checked /><label
+            for="len-all"
+            >All</label
+          >
+          <input type="radio" name="length" id="len-short" /><label
+            for="len-short"
+            >Short</label
+          >
+          <input type="radio" name="length" id="len-bob" /><label for="len-bob"
+            >Bob</label
+          >
+          <input type="radio" name="length" id="len-medium" /><label
+            for="len-medium"
+            >Medium</label
+          >
+          <input type="radio" name="length" id="len-long" /><label
+            for="len-long"
+            >Long</label
+          >
+        </div>
+
+        <ul class="style-grid">
+          <li class="style-card is-short is-tall">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--f"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">耳かけハンサムショート</p>
+                <p class="style-card__by">by Ren / MAISON ÉTÉ</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-bob">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--d"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">切りっぱなしミニボブ</p>
+                <p class="style-card__by">by Yui / Atelier NOA</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-long">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--e"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">くびれレイヤーロング</p>
+                <p class="style-card__by">by Sora / roji hair</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-medium is-tall">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--g"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">ツヤ髪ワンカールミディ</p>
+                <p class="style-card__by">by Mio / hazel</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-bob is-tall">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--b"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">ミルクティーベージュボブ</p>
+                <p class="style-card__by">by Yui / Atelier NOA</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-short">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--h"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">白髪ぼかしマッシュショート</p>
+                <p class="style-card__by">by Kaho / lull.</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-medium">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--c"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">ラベンダーグレージュ</p>
+                <p class="style-card__by">by Sora / roji hair</p>
+              </div></a
+            >
+          </li>
+          <li class="style-card is-long is-tall">
+            <a href="#stylists"
+              ><div class="ph ph--portrait ph--a"></div>
+              <div class="style-card__info">
+                <p class="style-card__name">透け感ハイライトロング</p>
+                <p class="style-card__by">by Yui / Atelier NOA</p>
+              </div></a
+            >
+          </li>
         </ul>
-      </nav>
-    </div>
-    <p class="footer__note">※ 本サイトは制作サンプルです。掲載されているサロン・人物・数値はすべて架空のものです。</p>
-    <p class="footer__cr"><small>&copy; 2026 hue. Beauty Salon Journal</small></p>
-  </footer>
+      </section>
 
-  <!-- スマホ用 下部固定ナビ -->
-  <nav class="tabbar" aria-label="クイックメニュー">
-    <a href="#search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>探す</a>
-    <a href="#styles"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="9" rx="1"/><rect x="13" y="4" width="7" height="6" rx="1"/><rect x="4" y="15" width="7" height="5" rx="1"/><rect x="13" y="12" width="7" height="8" rx="1"/></svg>スタイル</a>
-    <a href="#pickup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg>お気に入り</a>
-    <a href="#top"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1-3.6 3.8-5.5 7-5.5s6 1.9 7 5.5"/></svg>マイページ</a>
-  </nav>
+      <!-- ========== スタイリスト ========== -->
+      <section
+        class="section stylists"
+        id="stylists"
+        aria-labelledby="stylists-title"
+      >
+        <div class="section__head section__head--row">
+          <div>
+            <p class="section__num">04</p>
+            <h2 class="section__title" id="stylists-title">
+              <span class="en">Stylists</span>「この人に切ってほしい」から
+            </h2>
+          </div>
+          <a href="#stylists" class="link-more"
+            >スタイリスト一覧<span aria-hidden="true">→</span></a
+          >
+        </div>
 
-</body>
+        <ul class="stylist-list">
+          <li class="stylist">
+            <div class="stylist__photo">
+              <div class="ph ph--portrait ph--a"></div>
+            </div>
+            <p class="stylist__role">Director</p>
+            <h3 class="stylist__name">Yui Nakano</h3>
+            <p class="stylist__salon">Atelier NOA ／ 表参道</p>
+            <p class="stylist__skill">ブリーチなしの透明感カラー</p>
+            <p class="stylist__rate">★ 4.97 ・ 指名 1,204件</p>
+          </li>
+          <li class="stylist">
+            <div class="stylist__photo">
+              <div class="ph ph--portrait ph--e"></div>
+            </div>
+            <p class="stylist__role">Top Stylist</p>
+            <h3 class="stylist__name">Sora Ikeda</h3>
+            <p class="stylist__salon">roji hair ／ 中目黒</p>
+            <p class="stylist__skill">顔まわりレイヤーの設計</p>
+            <p class="stylist__rate">★ 4.91 ・ 指名 876件</p>
+          </li>
+          <li class="stylist">
+            <div class="stylist__photo">
+              <div class="ph ph--portrait ph--f"></div>
+            </div>
+            <p class="stylist__role">Owner</p>
+            <h3 class="stylist__name">Ren Aoki</h3>
+            <p class="stylist__salon">MAISON ÉTÉ ／ 代官山</p>
+            <p class="stylist__skill">骨格から考えるショート</p>
+            <p class="stylist__rate">★ 4.95 ・ 指名 652件</p>
+          </li>
+          <li class="stylist">
+            <div class="stylist__photo">
+              <div class="ph ph--portrait ph--g"></div>
+            </div>
+            <p class="stylist__role">Stylist</p>
+            <h3 class="stylist__name">Mio Saeki</h3>
+            <p class="stylist__salon">hazel ／ 銀座</p>
+            <p class="stylist__skill">酸熱トリートメント・髪質改善</p>
+            <p class="stylist__rate">★ 4.88 ・ 指名 931件</p>
+          </li>
+          <li class="stylist">
+            <div class="stylist__photo">
+              <div class="ph ph--portrait ph--h"></div>
+            </div>
+            <p class="stylist__role">Stylist</p>
+            <h3 class="stylist__name">Kaho Mori</h3>
+            <p class="stylist__salon">lull. ／ 吉祥寺</p>
+            <p class="stylist__skill">白髪を活かすグレイカラー</p>
+            <p class="stylist__rate">★ 4.90 ・ 指名 488件</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ========== 読みもの ========== -->
+      <section
+        class="section journal"
+        id="journal"
+        aria-labelledby="journal-title"
+      >
+        <div class="section__head section__head--row">
+          <div>
+            <p class="section__num">05</p>
+            <h2 class="section__title" id="journal-title">
+              <span class="en">Journal</span>髪と、わたしの読みもの
+            </h2>
+          </div>
+          <a href="#journal" class="link-more"
+            >記事一覧<span aria-hidden="true">→</span></a
+          >
+        </div>
+
+        <div class="journal__grid">
+          <article class="article article--main reveal">
+            <a href="#journal">
+              <div class="article__img">
+                <div class="ph ph--portrait ph--b"></div>
+              </div>
+              <p class="article__cat">Feature ／ 2026.09.24</p>
+              <h3 class="article__title">
+                秋のくすみカラー、<br />“肌がきれいに見える”色の選び方
+              </h3>
+              <p class="article__excerpt">
+                パーソナルカラーだけでは決めきれない、髪色と肌の関係。人気カラーリスト3名に、この秋の正解を聞きました。
+              </p>
+            </a>
+          </article>
+          <article class="article reveal">
+            <a href="#journal">
+              <div class="article__img"><div class="ph ph--i"></div></div>
+              <p class="article__cat">Interview ／ 2026.09.18</p>
+              <h3 class="article__title">
+                表参道で12年。Yui Nakanoが語る「似合わせ」の正体
+              </h3>
+            </a>
+          </article>
+          <article class="article reveal">
+            <a href="#journal">
+              <div class="article__img"><div class="ph ph--c"></div></div>
+              <p class="article__cat">Howto ／ 2026.09.10</p>
+              <h3 class="article__title">
+                美容室でのオーダー、写真1枚で伝わる“言い方”のコツ
+              </h3>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== エリアから探す ========== -->
+      <section class="section area" aria-labelledby="area-title">
+        <div class="area__inner">
+          <h2 class="section__title" id="area-title">
+            <span class="en">Area</span>エリアから探す
+          </h2>
+          <dl class="area__list">
+            <div>
+              <dt>関東</dt>
+              <dd>
+                <a href="#search">東京</a><a href="#search">神奈川</a
+                ><a href="#search">埼玉</a><a href="#search">千葉</a>
+              </dd>
+            </div>
+            <div>
+              <dt>関西</dt>
+              <dd>
+                <a href="#search">大阪</a><a href="#search">京都</a
+                ><a href="#search">兵庫</a>
+              </dd>
+            </div>
+            <div>
+              <dt>東海</dt>
+              <dd><a href="#search">愛知</a><a href="#search">静岡</a></dd>
+            </div>
+            <div>
+              <dt>九州</dt>
+              <dd><a href="#search">福岡</a><a href="#search">熊本</a></dd>
+            </div>
+            <div>
+              <dt>北海道・東北</dt>
+              <dd><a href="#search">北海道</a><a href="#search">宮城</a></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ========== 掲載希望のサロン向け ========== -->
+      <section class="owner" id="owner" aria-labelledby="owner-title">
+        <div class="owner__visual" aria-hidden="true">
+          <div class="ph ph--i"></div>
+        </div>
+        <div class="owner__body">
+          <p class="owner__en">For Salon Owners</p>
+          <h2 class="owner__title" id="owner-title">
+            あなたのサロンの「空気」まで、<br />届けませんか。
+          </h2>
+          <p>
+            hue.
+            は審査制の美容ポータルです。価格ではなく、技術と世界観で選ばれたいサロンさまを募集しています。掲載料は来店成果に応じた完全成果報酬制。
+          </p>
+          <a href="#owner" class="btn btn--light"
+            >掲載について詳しく見る
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="logo__mark">hue<i>.</i></p>
+          <p class="footer__copy">感度で選ぶ、ヘアサロンの本。</p>
+        </div>
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="#search">サロンを探す</a></li>
+            <li><a href="#styles">ヘアスタイル</a></li>
+            <li><a href="#stylists">スタイリスト</a></li>
+            <li><a href="#journal">読みもの</a></li>
+          </ul>
+          <ul>
+            <li><a href="#owner">掲載をご検討のサロン様</a></li>
+            <li><a href="#top">運営会社</a></li>
+            <li><a href="#top">利用規約</a></li>
+            <li><a href="#top">プライバシーポリシー</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer__note">
+        ※
+        本サイトは制作サンプルです。掲載されているサロン・人物・数値はすべて架空のものです。
+      </p>
+      <p class="footer__cr">
+        <small>&copy; 2026 hue. Beauty Salon Journal</small>
+      </p>
+    </footer>
+
+    <!-- スマホ用 下部固定ナビ -->
+    <nav class="tabbar" aria-label="クイックメニュー">
+      <a href="#search"
+        ><svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="m16 16 4 4" /></svg
+        >探す</a
+      >
+      <a href="#styles"
+        ><svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="4" width="7" height="9" rx="1" />
+          <rect x="13" y="4" width="7" height="6" rx="1" />
+          <rect x="4" y="15" width="7" height="5" rx="1" />
+          <rect x="13" y="12" width="7" height="8" rx="1" /></svg
+        >スタイル</a
+      >
+      <a href="#pickup"
+        ><svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"
+          /></svg
+        >お気に入り</a
+      >
+      <a href="#top"
+        ><svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8.5" r="3.5" />
+          <path d="M5 20c1-3.6 3.8-5.5 7-5.5s6 1.9 7 5.5" /></svg
+        >マイページ</a
+      >
+    </nav>
+  </body>
 </html>
